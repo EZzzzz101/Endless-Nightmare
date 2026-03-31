@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Unity Projects\\Endless Nightmare\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|e:\\unity projects\\endless nightmare\\assets\\_completedassets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\_completedassets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|e:\\unity projects\\endless nightmare\\assets\\_completedassets\\scripts\\player\\playershooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\_completedassets\\scripts\\player\\playershooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FFC8B99-9EAB-A2A1-4495-9FF1B68AB01E}|Assembly-CSharp-Editor.csproj|e:\\unity projects\\endless nightmare\\assets\\_completedassets\\mobileinput\\scripts\\editor\\crossplatforminputinitialize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FFC8B99-9EAB-A2A1-4495-9FF1B68AB01E}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\_completedassets\\mobileinput\\scripts\\editor\\crossplatforminputinitialize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|e:\\unity projects\\endless nightmare\\assets\\_completedassets\\scripts\\enemy\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\_completedassets\\scripts\\enemy\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerShooting.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\Scripts\\Player\\PlayerShooting.cs",
+              "RelativeDocumentMoniker": "Assets\\_CompletedAssets\\Scripts\\Player\\PlayerShooting.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\Scripts\\Player\\PlayerShooting.cs",
+              "RelativeToolTip": "Assets\\_CompletedAssets\\Scripts\\Player\\PlayerShooting.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAzwDAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T05:11:58.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\_CompletedAssets\\Scripts\\Player\\PlayerMovement.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\_CompletedAssets\\Scripts\\Player\\PlayerMovement.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAuwEQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T05:05:38.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CrossPlatformInputInitialize.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\MobileInput\\Scripts\\Editor\\CrossPlatformInputInitialize.cs",
+              "RelativeDocumentMoniker": "Assets\\_CompletedAssets\\MobileInput\\Scripts\\Editor\\CrossPlatformInputInitialize.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\MobileInput\\Scripts\\Editor\\CrossPlatformInputInitialize.cs",
+              "RelativeToolTip": "Assets\\_CompletedAssets\\MobileInput\\Scripts\\Editor\\CrossPlatformInputInitialize.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAwFYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T04:39:22.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EnemyMovement.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\_CompletedAssets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\_CompletedAssets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "RelativeToolTip": "Assets\\_CompletedAssets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T04:35:56.567Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
