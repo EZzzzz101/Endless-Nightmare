@@ -1,87 +1,81 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.SceneManagement;
+
 
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
-    public Slider healthSlider;
-    public Image damageImage;
-    public AudioClip deathClip;
-    public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    // ====================== 观察者模式======================
+    // 1. 定义委托：规定通知要带的参数（当前血量、最大血量、是否死亡）
+    public delegate void OnHealthChanged(float currentHealth, float maxHealth, bool isDead);
+    // 2. 定义事件：外部只能订阅，不能随便触发
+    public event OnHealthChanged HealthChanged;
+    //玩家血量
+    public float maxHealth = 100;
+    public float health;
+    //玩家是否死亡
+    public bool PlayerIsDeath = false;
+    private AudioSource playerAudio;
+    private PlayerMovement playerMovement;
+    private PlayerShooting playerShooting;
+    public AudioClip playerDeathClip;
+    private Animator ani;
 
-    Animator anim;
-    AudioSource playerAudio;
-    PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
-    bool isDead;
-    bool damaged;
-
-
-    void Awake ()
+    private void Awake()
     {
-        anim = GetComponent <Animator> ();
-        playerAudio = GetComponent <AudioSource> ();
-        playerMovement = GetComponent <PlayerMovement> ();
-        //playerShooting = GetComponentInChildren <PlayerShooting> ();
-        currentHealth = startingHealth;
+        playerAudio = GetComponent<AudioSource>();
+        ani=GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerShooting = GetComponentInChildren<PlayerShooting>();
+        health = maxHealth;
     }
 
-
-    void Update ()
+    //玩家受伤
+    public void PlayerTakeDamage(float attackDamage)
     {
-        if(damaged)
+        //受击音效
+        playerAudio.Play();
+        health -= attackDamage;
+        //Debug.Log("当前生命值：" + health);
+
+        // ====================== 受伤后发布通知，告诉所有订阅者血量变了 ======================
+        HealthChanged?.Invoke(health, maxHealth, PlayerIsDeath);
+
+        //死亡
+        if (health <= 0)
         {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-        damaged = false;
-    }
-
-
-    public void TakeDamage (int amount)
-    {
-        damaged = true;
-
-        currentHealth -= amount;
-
-        healthSlider.value = currentHealth;
-
-        playerAudio.Play ();
-
-        if(currentHealth <= 0 && !isDead)
-        {
-            Death ();
+            Death();
+            PlayerIsDeath = true;
         }
     }
 
-
-    void Death ()
+    void Death()
     {
-        isDead = true;
-
-        //playerShooting.DisableEffects ();
-
-        anim.SetTrigger ("Die");
-
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
-
+        //死亡音效
+        playerAudio.clip = playerDeathClip;
+        playerAudio.Play();
+        //死亡动画
+        ani.SetTrigger("Death");
+        //禁止移动，射击
         playerMovement.enabled = false;
-        //playerShooting.enabled = false;
+        playerShooting.enabled = false;
+
+        // ====================== 死亡时也发布通知 ======================
+        HealthChanged?.Invoke(health, maxHealth, PlayerIsDeath);
     }
 
 
-    public void RestartLevel ()
+    // 回血方法
+    public void Heal(float healAmount)
     {
-        SceneManager.LoadScene (0);
+        if (PlayerIsDeath) return;
+        health += healAmount;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        HealthChanged?.Invoke(health, maxHealth, PlayerIsDeath);
+    }
+    public void RestartLevel()
+    {
+
     }
 }

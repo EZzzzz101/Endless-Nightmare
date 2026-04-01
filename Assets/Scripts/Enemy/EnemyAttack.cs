@@ -1,70 +1,56 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;
-    public int attackDamage = 10;
+    public float attackDamage = 50;
+    //在范围内
+    private bool playerInRange;
+    // 攻击间隔
+    public float timeBetweenAttacks = 1f;
+    private float timer;
+    private PlayerHealth playerHealth;
 
-
-    Animator anim;
-    GameObject player;
-    PlayerHealth playerHealth;
-    //EnemyHealth enemyHealth;
-    bool playerInRange;
-    float timer;
-
-
-    void Awake ()
-    {
-        player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealth> ();
-        //enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent <Animator> ();
-    }
-
-
-    void OnTriggerEnter (Collider other)
-    {
-        if(other.gameObject == player)
-        {
-            playerInRange = true;
-        }
-    }
-
-
-    void OnTriggerExit (Collider other)
-    {
-        if(other.gameObject == player)
-        {
-            playerInRange = false;
-        }
-    }
-
-
-    void Update ()
+    private void Update()
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange/* && enemyHealth.currentHealth > 0*/)
+        // 玩家在范围内 + 到攻击时间 + 玩家没死，攻击
+        if (playerInRange && timer >= timeBetweenAttacks && playerHealth != null)
         {
-            Attack ();
-        }
-
-        if(playerHealth.currentHealth <= 0)
-        {
-            anim.SetTrigger ("PlayerDead");
+            if (!playerHealth.PlayerIsDeath)
+            {
+                Attack();
+            }
         }
     }
 
-
-    void Attack ()
+    private void Attack()
     {
         timer = 0f;
+        playerHealth.PlayerTakeDamage(attackDamage);
+    }
 
-        if(playerHealth.currentHealth > 0)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-            playerHealth.TakeDamage (attackDamage);
+            playerInRange = true;
+            //Debug.Log("Enemy into player");
+            //取得玩家血量
+            if (other.TryGetComponent<PlayerHealth>(out var health))
+            {
+                playerHealth = health;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerInRange = false;
+            //Debug.Log("Enemy leave player");
         }
     }
 }
