@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int score;
+    public static ScoreManager Instance;
 
+    public delegate void OnScoreChanged(int score);
+    public event OnScoreChanged ScoreChanged;
 
-    Text text;
+    public int currentScore = 0;
 
-
-    void Awake ()
+    private void Awake()
     {
-        text = GetComponent <Text> ();
-        score = 0;
+        Instance = this;
     }
 
-
-    void Update ()
+    // 怪物死亡时调用
+    public void AddScore(int killScore)
     {
-        text.text = "Score: " + score;
+        Debug.Log("manager接收到分数");
+        currentScore += killScore;
+        ScoreChanged?.Invoke(currentScore); 
     }
 }

@@ -28,6 +28,13 @@ public abstract class EnemyBase : MonoBehaviour
     protected float attackTimer;      // 攻击计时
     protected bool isSinking;         // 是否正在下沉
 
+    // 定义怪物死亡委托
+    public delegate void OnEnemyKilled(int killScore);
+    // 定义怪物死亡事件
+    public event OnEnemyKilled EnemyKilled;
+
+    [Header("击杀分数")]
+    public int killScore = 10;
 
     //virtual可改
     protected virtual void Awake()
@@ -124,7 +131,6 @@ public abstract class EnemyBase : MonoBehaviour
 
         // 扣血
         currentHealth -= damage;
-        Debug.Log(gameObject.name + " 受伤，剩余血量：" + currentHealth);
 
         // 血量归0就死亡
         if (currentHealth <= 0)
@@ -137,7 +143,6 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         isDead = true;
-        Debug.Log(gameObject.name + " 死亡");
 
         // 播放死亡动画
         anim.SetTrigger("Death");
@@ -153,6 +158,9 @@ public abstract class EnemyBase : MonoBehaviour
             enemyAudio.clip = deathClip;
             enemyAudio.Play();
         }
+        // 发布被击杀通知
+        Debug.Log(gameObject.name + " 死亡"+ killScore+"分");
+        EnemyKilled?.Invoke(killScore);
 
         // 下沉
         StartSinking();

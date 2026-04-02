@@ -310,6 +310,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   moveSpeed: 3.5
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
+  killScore: 20
 --- !u!4 &798609365479189307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400074, guid: be66986effd141b4992d2d78be127139,

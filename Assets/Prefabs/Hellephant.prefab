@@ -5148,11 +5148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10622c718fb9ee84290f3c4e1a37ab10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hellephant
-  maxHealth: 100
+  maxHealth: 200
   attackDamage: 50
   timeBetweenAttacks: 1
   moveSpeed: 3.5
   deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
+  killScore: 50
 --- !u!1 &109428
 GameObject:
   m_ObjectHideFlags: 0
