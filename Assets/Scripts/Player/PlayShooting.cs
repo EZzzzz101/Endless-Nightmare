@@ -18,8 +18,8 @@ public class PlayerShooting : MonoBehaviour
     private int shootMask;
 
     //定义武器伤害及倍率
-    private int baseDamage = 50;
-    private float dmgMulti = 1f;
+    public int baseDamage = 50;
+    public float dmgMulti = 1f;
 
     private void Awake()
     {
@@ -51,6 +51,8 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shooting()
     {
+
+        GameEvent.OnGunShot?.Invoke();
         timer = 0;
 
         //启动灯光

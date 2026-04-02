@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: be66986effd141b4992d2d78be127139, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: be66986effd141b4992d2d78be127139, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: be66986effd141b4992d2d78be127139, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 19437080d2a6b30479d0926aba3ac2c0, type: 2}
+      objectReference: {fileID: 9100000, guid: a8297b5339c2a75418f152497287c4ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -306,11 +306,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Zombunny
   maxHealth: 100
-  attackDamage: 50
+  attackDamage: 10
   timeBetweenAttacks: 1
   moveSpeed: 3.5
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
   killScore: 20
+  detectRange: 4
+  fleeSpeed: 6
+  cryEffectRange: 8
+  fleeRunDistance: 15
+  crySound: {fileID: 8300000, guid: b422a5d63bade4248bdc7e97d653a8c7, type: 3}
 --- !u!4 &798609365479189307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400074, guid: be66986effd141b4992d2d78be127139,

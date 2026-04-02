@@ -97,7 +97,6 @@ public abstract class EnemyBase : MonoBehaviour
     // ×·»÷Íæ¼Ò
     protected void ChasePlayer()
     {
-        agent.speed = moveSpeed;
         agent.SetDestination(targetPlayer.position);
     }
 
@@ -143,6 +142,11 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         isDead = true;
+
+        if (LevelSystem.Instance != null)
+        {
+            LevelSystem.Instance.AddExp(50f); 
+        }
 
         // ²¥·ÅËÀÍö¶¯»­
         anim.SetTrigger("Death");

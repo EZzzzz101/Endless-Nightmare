@@ -266,10 +266,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZomBear
   maxHealth: 100
-  attackDamage: 50
+  attackDamage: 20
   timeBetweenAttacks: 1
-  moveSpeed: 3.5
+  moveSpeed: 4
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
+  killScore: 10
+  detectRange: 8
+  enrageSpeed: 10
+  enrageDamage: 30
+  madnessSpeedMulti: 1.2
+  madnessDuration: 10
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
