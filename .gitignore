@@ -1,5 +1,4 @@
 # Unity 项目标准 .gitignore
-# 临时文件
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -8,7 +7,7 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
-# 元数据缓存
+# 缓存文件
 AssetStore.assetmap
 AssetStore/
 
@@ -21,10 +20,6 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-
-# 项目设置（可选，根据需要保留）
-# ProjectSettings/
-# Assets/StreamingAssets/
 
 # 日志
 *.log
@@ -54,6 +49,19 @@ UserSettings/
 *.mdb
 *.opendb
 *.VC.db
+
+# 第三方插件 / 导入的包
+Assets/Plugins/
+Assets/Editor/
+
+# Photon 相关（自动忽略）
+Assets/Photon/
+Assets/PhotonUnityNetworking/
+Assets/PhotonLibs/
+Assets/PhotonServerSettings.asset
+Assets/PhotonAppSettings.asset
+
+# 其他不需要提交的格式
 *.pyc
 *.pyo
 *.pyd
@@ -62,34 +70,12 @@ UserSettings/
 *.dylib
 *.class
 *.jar
-*.war
-*.ear
 *.zip
 *.7z
 *.gz
 *.rar
-*.zip
-*.tar.gz
-*.rar
 *.exe
-*.msi
 *.app
 *.dmg
-*.iso
-*.img
 *.apk
 *.ipa
-*.xap
-*.appx
-*.msix
-*.msixbundle
-*.appxbundle
-*.msi
-*.msp
-*.mst
-*.cab
-*.msu
-*.msp
-*.mst
-*.cab
-*.msu

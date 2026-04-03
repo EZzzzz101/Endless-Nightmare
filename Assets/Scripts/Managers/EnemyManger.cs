@@ -11,9 +11,9 @@ public class EnemyManager : MonoBehaviour
     public int maxSpawnTryCount = 10;
 
     [Header("3怪概率")]
-    public GameObject zomBearPrefab;
-    public GameObject zombunnyPrefab;
-    public GameObject hellephantPrefab;
+    public string tagZomBear = "ZomBear";
+    public string tagZombunny = "Zombunny";
+    public string tagHellephant = "Hellephant";
 
     public float chanceZomBear = 45f;
     public float chanceZombunny = 35f;
@@ -44,48 +44,43 @@ public class EnemyManager : MonoBehaviour
             float randomDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
             Vector3 randomPos = player.position + new Vector3(randomDir.x, 0, randomDir.y) * randomDistance;
 
-            //Debug.Log($"第{i + 1}次尝试刷怪，位置：{randomPos}");
-
             // 检测这个位置是不是在NavMesh上
             if (NavMesh.SamplePosition(randomPos, out navHit, 2f, NavMesh.AllAreas))
             {
-                //Debug.Log($"找到可用刷怪点：{navHit.position}");
+                string randomTag = GetRandomEnemyTagByWeight();
 
-                GameObject randomEnemy = GetRandomEnemyByWeight();
-
-                if (randomEnemy != null)
+                if (!string.IsNullOrEmpty(randomTag))
                 {
-                    GameObject newEnemy = Instantiate(randomEnemy, navHit.position, Quaternion.identity);
-                    EnemyBase enemyBase = newEnemy.GetComponent<EnemyBase>();
+                    // 从对象池取出怪物
+                    GameObject newEnemy = ObjectPool.Instance.GetFromPool(randomTag, navHit.position, Quaternion.identity);
 
-                    //怪物死亡，分数变化
-                    enemyBase.EnemyKilled += ScoreManager.Instance.AddScore;
+                    if (newEnemy != null)
+                    {
+                        EnemyBase enemyBase = newEnemy.GetComponent<EnemyBase>();
+
+                        // 手动重置怪物状态
+                        enemyBase.ResetEnemy();
+
+                        // 重新订阅死亡事件（因为Reset里清空了）
+                        enemyBase.EnemyKilled += ScoreManager.Instance.AddScore;
+                    }
                 }
                 return;
             }
         }
-
-        Debug.LogWarning("没找到可用的刷怪点！请扩大刷怪范围，或检查NavMesh是否烘焙正确");
     }
-    private GameObject GetRandomEnemyByWeight()
+    private string GetRandomEnemyTagByWeight()
     {
         float totalChance = chanceZomBear + chanceZombunny + chanceHellephant;
         float randomValue = Random.Range(0, totalChance);
 
-        // 先抽 ZomBear
         if (randomValue < chanceZomBear)
-        {
-            return zomBearPrefab;
-        }
+            return tagZomBear;
 
-        // 再抽 Zombunny
         randomValue -= chanceZomBear;
         if (randomValue < chanceZombunny)
-        {
-            return zombunnyPrefab; 
-        }
+            return tagZombunny;
 
-        // 最后抽 Hellephant
-        return hellephantPrefab;
+        return tagHellephant;
     }
 }

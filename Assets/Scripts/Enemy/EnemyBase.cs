@@ -3,6 +3,10 @@ using UnityEngine.AI;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+
+    [Header("【对象池标签】")]
+    public string poolTag;
+
     protected NavMeshAgent agent;       // 寻路组件，对应EnemyMovement
     protected Animator anim;             // 动画组件，对应EnemyHealth的死亡动画
     protected AudioSource enemyAudio;    // 音效组件，对应受伤、死亡音效
@@ -24,6 +28,7 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("【状态变量】不用手动改")]
     protected float currentHealth;    // 当前血量
     protected bool isDead;            // 是否死亡
+    public bool IsDead => isDead;
     protected bool playerInRange;     // 玩家是否在攻击范围内
     protected float attackTimer;      // 攻击计时
     protected bool isSinking;         // 是否正在下沉
@@ -62,6 +67,36 @@ public abstract class EnemyBase : MonoBehaviour
         // 3. 初始化血量
         currentHealth = maxHealth;
     }
+
+    // ------------------ 【新增】对象池复用：重置怪物状态 ------------------
+    public void ResetEnemy()
+    {
+        // 1. 重置状态变量
+        isDead = false;
+        isSinking = false;
+        playerInRange = false;
+        currentHealth = maxHealth;
+        attackTimer = 0;
+
+        // 2. 重置组件
+        agent.enabled = true;
+        agent.speed = moveSpeed; // 恢复移动速度
+        capsuleCollider.isTrigger = false;
+        rb.isKinematic = false;
+
+        // 3. 重置动画（清除所有Trigger，重置到Idle状态）
+        anim.Rebind();
+        anim.Update(0f);
+
+        // 4. 停止所有粒子和音效
+        if (hitParticle.isPlaying) hitParticle.Stop();
+        if (enemyAudio.isPlaying) enemyAudio.Stop();
+
+        // 5. 重置位置（虽然取出来会设，但这里多一层保险）
+        transform.rotation = Quaternion.identity;
+    }
+    // -------------------------------------------------------------------
+
 
     protected virtual void Update()
     {
@@ -138,7 +173,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    // 所有怪的死亡逻辑
+    // 所有怪的死亡(回收)逻辑
     protected virtual void Die()
     {
         isDead = true;
@@ -163,7 +198,6 @@ public abstract class EnemyBase : MonoBehaviour
             enemyAudio.Play();
         }
         // 发布被击杀通知
-        Debug.Log(gameObject.name + " 死亡"+ killScore+"分");
         EnemyKilled?.Invoke(killScore);
 
         // 下沉
@@ -174,7 +208,26 @@ public abstract class EnemyBase : MonoBehaviour
     protected void StartSinking()
     {
         isSinking = true;
-        Destroy(gameObject, 2f);
+        //Destroy(gameObject, 2f);
+        //调用回收
+        Invoke(nameof(ReturnToPoolDelayed), 2f);
+    }
+
+    private void ReturnToPoolDelayed()
+    {
+        // 重要：回收前先把事件清空，避免下次复用时重复触发
+        EnemyKilled = null;
+
+        // 调用对象池回收
+        if (!string.IsNullOrEmpty(poolTag))
+        {
+            ObjectPool.Instance.ReturnToPool(poolTag, this.gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("怪物的PoolTag没填！", this);
+            Destroy(gameObject); // 没填Tag就还是销毁，避免报错
+        }
     }
 
     // 玩家进入攻击范围
@@ -192,6 +245,34 @@ public abstract class EnemyBase : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+        }
+    }
+
+    public void ForceDie()
+    {
+        // 只处理活着的怪，避免重复触发死亡逻辑
+        if (!isDead)
+        {
+            isDead = true;
+
+            if (LevelSystem.Instance != null)
+            {
+                LevelSystem.Instance.AddExp(50f);
+            }
+
+            // 播放死亡动画
+            anim.SetTrigger("Death");
+
+            // 关闭寻路、关闭物理
+            agent.enabled = false;
+            capsuleCollider.isTrigger = true;
+            rb.isKinematic = true;
+
+            // 发布被击杀通知
+            EnemyKilled?.Invoke(killScore);
+
+            // 下沉
+            StartSinking();
         }
     }
 }
