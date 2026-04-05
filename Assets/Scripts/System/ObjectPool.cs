@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public string tag;          // 池子标签（要和怪物预制体的Tag一致）
+        public string tag;          // 池子标签
         public GameObject prefab;   // 怪物预制体
         public int preloadCount;    // 预生成数量
     }
@@ -56,7 +56,7 @@ public class ObjectPool : MonoBehaviour
         objToUse.transform.position = position;
         objToUse.transform.rotation = rotation;
 
-        // 取出后立刻放回队列末尾（如果下次取的时候它还是激活的，说明池子不够用了，会自动扩容）
+        // 取出后立刻放回队列末尾
         poolDictionary[tag].Enqueue(objToUse);
 
         return objToUse;

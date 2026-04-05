@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Turning();
         Animating();
-
-
     }
 
     void OnMove(InputValue value)

@@ -50,7 +50,7 @@ public class UltimateFlashSkill : MonoBehaviour
             return;
         }
 
-        // 发射逻辑（你要的：可抽干，重启要30%）
+        // 发射逻辑
         if (Input.GetKey(KeyCode.Space))
         {
             if (isFiring && currentEnergy > 0) { }

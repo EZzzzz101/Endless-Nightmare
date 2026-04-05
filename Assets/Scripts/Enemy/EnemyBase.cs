@@ -7,22 +7,22 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("【对象池标签】")]
     public string poolTag;
 
-    protected NavMeshAgent agent;       // 寻路组件，对应EnemyMovement
-    protected Animator anim;             // 动画组件，对应EnemyHealth的死亡动画
-    protected AudioSource enemyAudio;    // 音效组件，对应受伤、死亡音效
-    protected ParticleSystem hitParticle;// 受击粒子，对应EnemyHealth的受伤粒子
-    protected CapsuleCollider capsuleCollider; // 碰撞体，对应攻击范围、死亡触发
-    protected Rigidbody rb;             // 刚体，对应死亡后的物理设置
+    protected NavMeshAgent agent;       // 寻路组件
+    protected Animator anim;             // 动画组件
+    protected AudioSource enemyAudio;    // 音效组件
+    protected ParticleSystem hitParticle;// 受击粒子
+    protected CapsuleCollider capsuleCollider; // 碰撞体
+    protected Rigidbody rb;             // 刚体
 
     protected Transform targetPlayer;    // 玩家的位置，所有怪都要追玩家
     protected PlayerHealth playerHealth; // 玩家的血量脚本，攻击要扣血
 
     [Header("【怪物基础属性】")]
-    public float maxHealth = 100f;       // 最大血量，对应EnemyHealth的health
-    public float attackDamage = 50f;      // 攻击力，对应EnemyAttack的attackDamage
-    public float timeBetweenAttacks = 1f; // 攻击间隔，对应EnemyAttack的timeBetweenAttacks
-    public float moveSpeed = 3.5f;        // 移动速度，对应EnemyMovement的寻路速度
-    public AudioClip deathClip;           // 死亡音效，对应EnemyHealth的deathClip
+    public float maxHealth = 100f;       // 最大血量
+    public float attackDamage = 50f;      // 攻击力
+    public float timeBetweenAttacks = 1f; // 攻击间隔
+    public float moveSpeed = 3.5f;        // 移速
+    public AudioClip deathClip;           // 死亡音效
 
 
     [Header("【状态变量】不用手动改")]
@@ -250,7 +250,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void ForceDie()
     {
-        // 只处理活着的怪，避免重复触发死亡逻辑
+
         if (!isDead)
         {
             isDead = true;

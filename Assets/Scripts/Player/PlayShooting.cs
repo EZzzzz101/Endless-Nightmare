@@ -44,7 +44,7 @@ public class PlayerShooting : MonoBehaviour
             gunLine.enabled = true;
             gunLine.SetPosition(0, transform.position);
 
-            // 设置颜色 + 粗细（从技能里读取！）
+            // 设置颜色 + 粗细
             gunLine.material.color = UltimateFlashSkill.Instance.laserColor;
             gunLine.startWidth = UltimateFlashSkill.Instance.laserWidth;
             gunLine.endWidth = UltimateFlashSkill.Instance.laserWidth;

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
 
-    // ====================== 观察者模式======================
-    // 1. 定义委托：规定通知要带的参数（当前血量、最大血量、是否死亡）
+    //  观察者模式
+    // 委托
     public delegate void OnHealthChanged(float currentHealth, float maxHealth, bool isDead);
-    // 2. 定义事件：外部只能订阅，不能随便触发
+    // 事件
     public event OnHealthChanged HealthChanged;
     //玩家血量
     public float maxHealth = 100;
@@ -39,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
         health -= attackDamage;
         //Debug.Log("当前生命值：" + health);
 
-        // ====================== 受伤后发布通知，告诉所有订阅者血量变了 ======================
+        //受伤后发布通知，告诉所有订阅者血量变了
         HealthChanged?.Invoke(health, maxHealth, PlayerIsDeath);
 
         //死亡

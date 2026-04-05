@@ -6745,7 +6745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aedfa8d334856c4bae10222d98ab656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateFlashSkill
-  unlockLevel: 1
+  unlockLevel: 3
   maxEnergy: 100
   energyCostPerSec: 15
   energyRecoverPerSec: 8
