@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class FastChargeSkill : MonoBehaviour
 {
@@ -10,17 +10,17 @@ public class FastChargeSkill : MonoBehaviour
 
     private int originalDamage;
 
-    [Header("¼¼ÄÜÅäÖÃ")]
+    [Header("æŠ€èƒ½é…ç½®")]
     public float cooldown = 8f;
     public int unlockLevel = 1;
 
-    [Header("Ç¿»¯Ð§¹û")]
+    [Header("å¼ºåŒ–æ•ˆæžœ")]
     public float buffDuration;
     public int buffDamage;
     public bool isBuffed { get; private set; }
 
 
-    // ÄÚ²¿
+    // å†…éƒ¨
     private float currentCD;
     private float buffTimer;
 
@@ -33,25 +33,25 @@ public class FastChargeSkill : MonoBehaviour
 
     private void Update()
     {
-        // ÀäÈ´
+        // å†·å´
         if (currentCD > 0)
             currentCD -= Time.deltaTime;
 
-        // Ç¿»¯¼ÆÊ±
+        // å¼ºåŒ–è®¡æ—¶
         if (isBuffed)
         {
             buffTimer -= Time.deltaTime;
             if (buffTimer <= 0)
             {
                 isBuffed = false;
-                Debug.Log("Ç¿»¯½áÊø");
+                Debug.Log("å¼ºåŒ–ç»“æŸ");
                 shooting.baseDamage = originalDamage;
             }
         }
 
         SkillUIManager.Instance.UpdateFastChargeUI();
 
-        // ÊäÈë
+        // è¾“å…¥
         if (Input.GetKeyDown(KeyCode.E))
             TryUseSkill();
     }
@@ -69,18 +69,18 @@ public class FastChargeSkill : MonoBehaviour
         shooting.baseDamage = buffDamage;
 
 
-        // ·Å¼¼ÄÜ
+        // æ”¾æŠ€èƒ½
         currentCD = cooldown;
         isBuffed = true;
         buffTimer = buffDuration;
 
-        Debug.Log("E¼¼ÄÜ ¼±ËÙ³äÄÜ ¼¤»î£¡");
+        Debug.Log("EæŠ€èƒ½ æ€¥é€Ÿå……èƒ½ æ¿€æ´»ï¼");
 
-        // Í¨Öª UI ¸üÐÂ
+        // é€šçŸ¥ UI æ›´æ–°
         SkillUIManager.Instance.UpdateFastChargeUI();
     }
 
-    // ¸øÍâ²¿»ñÈ¡×´Ì¬
+    // ç»™å¤–éƒ¨èŽ·å–çŠ¶æ€
     public float GetCD() => currentCD;
     public bool IsUnlocked() => LevelSystem.Instance.currentLevel >= unlockLevel;
 }

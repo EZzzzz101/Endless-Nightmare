@@ -1,29 +1,29 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class UltimateFlashSkill : MonoBehaviour
 {
     public static UltimateFlashSkill Instance;
 
-    [Header("¼¼ÄÜÅäÖÃ")]
+    [Header("æŠ€èƒ½é…ç½®")]
     public int unlockLevel = 5;
     public float maxEnergy = 100f;
     public float energyCostPerSec;
     public float energyRecoverPerSec;
 
-    [Header("¼¤¹âĞ§¹û")]
+    [Header("æ¿€å…‰æ•ˆæœ")]
     public float flashDmgMulti = 2.5f;
     public float laserRange = 100f;
     public float damageInterval = 0.15f;
 
-    [Header("¼¤¹âÍâ¹Û")]
+    [Header("æ¿€å…‰å¤–è§‚")]
     public Color laserColor = Color.blue;
     public float laserWidth = 0.15f;
 
-    [Header("ÒôĞ§")]
+    [Header("éŸ³æ•ˆ")]
     public AudioClip laserLoopSound;
     public AudioSource laserAudioSource;
 
-    [Header("ÖØÆôÃÅ¼÷")]
+    [Header("é‡å¯é—¨æ§›")]
     [Range(0, 1)] public float restartEnergyPercent = 0.3f;
 
     public float currentEnergy { get; private set; }
@@ -50,14 +50,14 @@ public class UltimateFlashSkill : MonoBehaviour
             return;
         }
 
-        // ·¢ÉäÂß¼­
+        // å‘å°„é€»è¾‘
         if (Input.GetKey(KeyCode.Space))
         {
             if (isFiring && currentEnergy > 0) { }
             else if (!isFiring && currentEnergy >= restartEnergyPercent * maxEnergy)
                 isFiring = true;
             else {
-                Debug.Log("¼¤¹âÀäÈ´ÖĞ");
+                Debug.Log("æ¿€å…‰å†·å´ä¸­");
                 isFiring = false;
             }
                
@@ -65,13 +65,13 @@ public class UltimateFlashSkill : MonoBehaviour
         else
             isFiring = false;
 
-        // ¿ª»ğ
+        // å¼€ç«
         if (isFiring)
             FireLaser();
         else
             StopLaserSound();
 
-        // ÄÜÁ¿
+        // èƒ½é‡
         if (isFiring)
             currentEnergy = Mathf.Max(0, currentEnergy - energyCostPerSec * Time.deltaTime);
         else
@@ -88,7 +88,7 @@ public class UltimateFlashSkill : MonoBehaviour
             laserAudioSource.Play();
         }
 
-        // ÉËº¦¼ä¸ô
+        // ä¼¤å®³é—´éš”
         damageTimer += Time.deltaTime;
         if (damageTimer >= damageInterval)
         {
@@ -104,7 +104,7 @@ public class UltimateFlashSkill : MonoBehaviour
             }
         }
     }
-    // Ö»Í£ÉùÒô
+    // åªåœå£°éŸ³
     void StopLaserSound()
     {
         if (laserAudioSource != null && laserAudioSource.isPlaying)

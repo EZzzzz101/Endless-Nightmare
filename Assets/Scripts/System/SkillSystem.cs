@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillSystem : MonoBehaviour
 {
     public static SkillSystem Instance;
 
-    [Header("===== Èı¸ö¼¼ÄÜ °´Ë³ĞòÍÏ =====")]
+    [Header("===== ä¸‰ä¸ªæŠ€èƒ½ æŒ‰é¡ºåºæ‹– =====")]
     public Skill[] skills;
 
     [System.Serializable]
@@ -14,16 +14,16 @@ public class SkillSystem : MonoBehaviour
         public string name;
         public int unlockLevel;
 
-        // Í¨ÓÃÀäÈ´£¨¼±ËÙ³äÄÜ / Ğ¡ÄĞº¢ÓÃ£©
+        // é€šç”¨å†·å´ï¼ˆæ€¥é€Ÿå……èƒ½ / å°ç”·å­©ç”¨ï¼‰
         public float cooldown;
         [HideInInspector] public float currentCD;
 
-        // ÖÕ¼«ÉÁ¹â×¨ÓÃ£ºÄÜÁ¿ÏµÍ³
-        [Header("----- ÖÕ¼«ÉÁ¹â×¨ÓÃ -----")]
+        // ç»ˆæé—ªå…‰ä¸“ç”¨ï¼šèƒ½é‡ç³»ç»Ÿ
+        [Header("----- ç»ˆæé—ªå…‰ä¸“ç”¨ -----")]
         public float maxEnergy = 100f;
         [HideInInspector] public float currentEnergy;
-        public float energyCostPerSec = 10f;   // Ã¿ÃëºÄÄÜ
-        public float energyRecoverPerSec = 15f; // ËÉ¿ªºó»ØÄÜËÙ¶È
+        public float energyCostPerSec = 10f;   // æ¯ç§’è€—èƒ½
+        public float energyRecoverPerSec = 15f; // æ¾å¼€åå›èƒ½é€Ÿåº¦
         [HideInInspector] public bool isFiring;
 
         // UI
@@ -38,10 +38,10 @@ public class SkillSystem : MonoBehaviour
 
     private void Start()
     {
-        // ³õÊ¼»¯ÖÕ¼«ÉÁ¹âÄÜÁ¿
+        // åˆå§‹åŒ–ç»ˆæé—ªå…‰èƒ½é‡
         foreach (var s in skills)
         {
-            if (s.name == "ÖÕ¼«ÉÁ¹â")
+            if (s.name == "ç»ˆæé—ªå…‰")
             {
                 s.currentEnergy = s.maxEnergy;
             }
@@ -59,29 +59,29 @@ public class SkillSystem : MonoBehaviour
     {
         foreach (var s in skills)
         {
-            if (s.name == "¼±ËÙ³äÄÜ" || s.name == "Ğ¡ÄĞº¢")
+            if (s.name == "æ€¥é€Ÿå……èƒ½" || s.name == "å°ç”·å­©")
             {
-                // ÆÕÍ¨ÀäÈ´¼¼ÄÜ
+                // æ™®é€šå†·å´æŠ€èƒ½
                 if (s.currentCD > 0)
                     s.currentCD -= Time.deltaTime;
             }
-            else if (s.name == "ÖÕ¼«ÉÁ¹â")
+            else if (s.name == "ç»ˆæé—ªå…‰")
             {
                 bool unlocked = LevelSystem.Instance.currentLevel >= s.unlockLevel;
                 if (!unlocked) continue;
 
-                // ³¤°´ = ÏûºÄÄÜÁ¿
+                // é•¿æŒ‰ = æ¶ˆè€—èƒ½é‡
                 if (s.isFiring)
                 {
                     if (s.currentEnergy > 0)
                     {
                         s.currentEnergy -= s.energyCostPerSec * Time.deltaTime;
-                        DoUltimateFlashDamage(); // ³ÖĞøÉËº¦
+                        DoUltimateFlashDamage(); // æŒç»­ä¼¤å®³
                     }
                 }
                 else
                 {
-                    // ²»°´ = »ØÄÜ
+                    // ä¸æŒ‰ = å›èƒ½
                     if (s.currentEnergy < s.maxEnergy)
                         s.currentEnergy += s.energyRecoverPerSec * Time.deltaTime;
                 }
@@ -93,7 +93,7 @@ public class SkillSystem : MonoBehaviour
     {
         var playerLevel = LevelSystem.Instance.currentLevel;
 
-        // ========== ¼±ËÙ³äÄÜ E ==========
+        // ========== æ€¥é€Ÿå……èƒ½ E ==========
         var fastCharge = skills[0];
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -101,11 +101,11 @@ public class SkillSystem : MonoBehaviour
             if (unlocked && fastCharge.currentCD <= 0)
             {
                 fastCharge.currentCD = fastCharge.cooldown;
-                Debug.Log("¡¾¼±ËÙ³äÄÜ¡¿´¥·¢");
+                Debug.Log("ã€æ€¥é€Ÿå……èƒ½ã€‘è§¦å‘");
             }
         }
 
-        // ========== ÖÕ¼«ÉÁ¹â ³¤°´¿Õ¸ñ ==========
+        // ========== ç»ˆæé—ªå…‰ é•¿æŒ‰ç©ºæ ¼ ==========
         var flash = skills[1];
         bool flashUnlocked = playerLevel >= flash.unlockLevel;
 
@@ -121,7 +121,7 @@ public class SkillSystem : MonoBehaviour
             }
         }
 
-        // ========== Ğ¡ÄĞº¢ Q ==========
+        // ========== å°ç”·å­© Q ==========
         var boy = skills[2];
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -129,27 +129,27 @@ public class SkillSystem : MonoBehaviour
             if (unlocked && boy.currentCD <= 0)
             {
                 boy.currentCD = boy.cooldown;
-                Debug.Log("¡¾Ğ¡ÄĞº¢¡¿ºËµ¯ÇåÆÁ");
+                Debug.Log("ã€å°ç”·å­©ã€‘æ ¸å¼¹æ¸…å±");
                 KillAllEnemies();
             }
         }
     }
 
-    // ========== ¼¼ÄÜĞ§¹û ==========
+    // ========== æŠ€èƒ½æ•ˆæœ ==========
     void DoUltimateFlashDamage()
     {
-        // ÕâÀïĞ´ÄãµÄ³ÖĞøÉËº¦Âß¼­
-        // ±ÈÈç£º¶ÔÇ°·½µĞÈËÔì³É³ÖĞøÉËº¦
-        Debug.Log("ÖÕ¼«ÉÁ¹â³ÖĞøÉËº¦ÖĞ...");
+        // è¿™é‡Œå†™ä½ çš„æŒç»­ä¼¤å®³é€»è¾‘
+        // æ¯”å¦‚ï¼šå¯¹å‰æ–¹æ•Œäººé€ æˆæŒç»­ä¼¤å®³
+        Debug.Log("ç»ˆæé—ªå…‰æŒç»­ä¼¤å®³ä¸­...");
     }
 
     void KillAllEnemies()
     {
-        // Ğ´ÄãµÄÇåÆÁÂß¼­
-        Debug.Log("È«Í¼µĞÈËÒÑÇå¿Õ£¡");
+        // å†™ä½ çš„æ¸…å±é€»è¾‘
+        Debug.Log("å…¨å›¾æ•Œäººå·²æ¸…ç©ºï¼");
     }
 
-    // ========== UI ¸üĞÂ ==========
+    // ========== UI æ›´æ–° ==========
     void UpdateAllUI()
     {
         foreach (var s in skills)
@@ -163,8 +163,8 @@ public class SkillSystem : MonoBehaviour
                 continue;
             }
 
-            // ÆÕÍ¨¼¼ÄÜ£º¼±ËÙ³äÄÜ + Ğ¡ÄĞº¢
-            if (s.name == "¼±ËÙ³äÄÜ" || s.name == "Ğ¡ÄĞº¢")
+            // æ™®é€šæŠ€èƒ½ï¼šæ€¥é€Ÿå……èƒ½ + å°ç”·å­©
+            if (s.name == "æ€¥é€Ÿå……èƒ½" || s.name == "å°ç”·å­©")
             {
                 if (s.currentCD > 0)
                 {
@@ -174,11 +174,11 @@ public class SkillSystem : MonoBehaviour
                 else
                 {
                     s.icon.color = Color.white;
-                    s.text.text = s.name == "¼±ËÙ³äÄÜ" ? "E" : "Q";
+                    s.text.text = s.name == "æ€¥é€Ÿå……èƒ½" ? "E" : "Q";
                 }
             }
-            // ÖÕ¼«ÉÁ¹â£ºÏÔÊ¾°Ù·Ö±È
-            else if (s.name == "ÖÕ¼«ÉÁ¹â")
+            // ç»ˆæé—ªå…‰ï¼šæ˜¾ç¤ºç™¾åˆ†æ¯”
+            else if (s.name == "ç»ˆæé—ªå…‰")
             {
                 s.icon.color = s.currentEnergy > 0 ? Color.white : Color.gray;
                 int percent = Mathf.RoundToInt(s.currentEnergy);

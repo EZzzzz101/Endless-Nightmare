@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    [Header("ÑªÁ¿")]
+    [Header("è¡€é‡")]
     public Text healthNumberText;
-    //ÉÁºì
+    //é—ªçº¢
     public Image damageImage;
     public float flashSpeed = 3f;
     public Color flashColor;
@@ -16,21 +16,21 @@ public class HealthUI : MonoBehaviour
 
     private void Awake()
     {
-        // ×Ô¶¯ÕÒµ½³¡¾°ÀïµÄÍæ¼Ò
+        // è‡ªåŠ¨æ‰¾åˆ°åœºæ™¯é‡Œçš„ç©å®¶
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
             playerHealth = player.GetComponent<PlayerHealth>();
-            // ÓÎÏ·Æô¶¯Ê±£¬ÏÈ³õÊ¼»¯Ò»´ÎÑªÁ¿Êı×Ö
+            // æ¸¸æˆå¯åŠ¨æ—¶ï¼Œå…ˆåˆå§‹åŒ–ä¸€æ¬¡è¡€é‡æ•°å­—
             InitHealthUI();
         }
         else
         {
-            Debug.LogError("Ã»ÕÒµ½Íæ¼Ò£¡ÇëÈ·ÈÏÍæ¼ÒµÄTagÊÇPlayer");
+            Debug.LogError("æ²¡æ‰¾åˆ°ç©å®¶ï¼è¯·ç¡®è®¤ç©å®¶çš„Tagæ˜¯Player");
         }
     }
 
-    // ÆôÓÃÊ±¶©ÔÄÊÂ¼ş
+    // å¯ç”¨æ—¶è®¢é˜…äº‹ä»¶
     private void OnEnable()
     {
         if (playerHealth != null)
@@ -39,7 +39,7 @@ public class HealthUI : MonoBehaviour
         }
     }
 
-    // ½ûÓÃÊ±È¡Ïû¶©ÔÄ
+    // ç¦ç”¨æ—¶å–æ¶ˆè®¢é˜…
     private void OnDisable()
     {
         if (playerHealth != null)
@@ -48,7 +48,7 @@ public class HealthUI : MonoBehaviour
         }
     }
 
-    // ÊÕµ½ÑªÁ¿±ä»¯Í¨Öª£¬¸üĞÂÊı×Ö
+    // æ”¶åˆ°è¡€é‡å˜åŒ–é€šçŸ¥ï¼Œæ›´æ–°æ•°å­—
     private void OnPlayerHealthChanged(float currentHealth, float maxHealth, bool isDead)
     {
         healthNumberText.text = $"{currentHealth:F0}";
@@ -59,15 +59,15 @@ public class HealthUI : MonoBehaviour
             StartDamageFlash();
 
         }
-        // Íæ¼ÒËÀÍöÊ±£¬Êı×Ö±äºì
+        // ç©å®¶æ­»äº¡æ—¶ï¼Œæ•°å­—å˜çº¢
         if (isDead)
         {
             healthNumberText.color = Color.red;
-            healthNumberText.text = "0"; // ËÀÍöÊ±Ç¿ÖÆÏÔÊ¾0
+            healthNumberText.text = "0"; // æ­»äº¡æ—¶å¼ºåˆ¶æ˜¾ç¤º0
         }
         else
         {
-            // ·ÇËÀÍö×´Ì¬»Ö¸´°×É«
+            // éæ­»äº¡çŠ¶æ€æ¢å¤ç™½è‰²
             healthNumberText.color = Color.white;
         }
     }
@@ -96,13 +96,13 @@ public class HealthUI : MonoBehaviour
         }
     }
 
-    // ÓÎÏ·Æô¶¯Ê±³õÊ¼»¯UI
+    // æ¸¸æˆå¯åŠ¨æ—¶åˆå§‹åŒ–UI
     private void InitHealthUI()
     {
         healthNumberText.text = $"{playerHealth.health:F0}/{playerHealth.maxHealth:F0}";
         healthNumberText.color = Color.white;
 
-        // ³õÊ¼»¯Ê±£¬°ÑÉÁºìÍ¼ÉèÎªÍêÈ«Í¸Ã÷£¬Òş²Ø
+        // åˆå§‹åŒ–æ—¶ï¼ŒæŠŠé—ªçº¢å›¾è®¾ä¸ºå®Œå…¨é€æ˜ï¼Œéšè—
         if (damageImage != null)
         {
             damageImage.color = new Color(flashColor.r, flashColor.g, flashColor.b, 0);

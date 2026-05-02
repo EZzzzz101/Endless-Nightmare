@@ -1,16 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
-    [Header("Ë¢¹ÖÉèÖÃ")]
+    [Header("åˆ·æ€ªè®¾ç½®")]
     public float minSpawnDistance = 15f;
     public float maxSpawnDistance = 25f;
     public float spawnInterval = 3f;
     public int maxSpawnTryCount = 10;
 
-    [Header("3¹Ö¸ÅÂÊ")]
+    [Header("3æ€ªæ¦‚ç‡")]
     public string tagZomBear = "ZomBear";
     public string tagZombunny = "Zombunny";
     public string tagHellephant = "Hellephant";
@@ -37,31 +37,31 @@ public class EnemyManager : MonoBehaviour
             return;
         }
 
-        // Ñ­»·ÕÒ¿ÉÓÃµÄNavMeshÎ»ÖÃ
+        // å¾ªç¯æ‰¾å¯ç”¨çš„NavMeshä½ç½®
         for (int i = 0; i < maxSpawnTryCount; i++)
         {
             Vector2 randomDir = Random.insideUnitCircle.normalized;
             float randomDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
             Vector3 randomPos = player.position + new Vector3(randomDir.x, 0, randomDir.y) * randomDistance;
 
-            // ¼ì²âÕâ¸öÎ»ÖÃÊÇ²»ÊÇÔÚNavMeshÉÏ
+            // æ£€æµ‹è¿™ä¸ªä½ç½®æ˜¯ä¸æ˜¯åœ¨NavMeshä¸Š
             if (NavMesh.SamplePosition(randomPos, out navHit, 2f, NavMesh.AllAreas))
             {
                 string randomTag = GetRandomEnemyTagByWeight();
 
                 if (!string.IsNullOrEmpty(randomTag))
                 {
-                    // ´Ó¶ÔÏó³ØÈ¡³ö¹ÖÎï
+                    // ä»å¯¹è±¡æ± å–å‡ºæ€ªç‰©
                     GameObject newEnemy = ObjectPool.Instance.GetFromPool(randomTag, navHit.position, Quaternion.identity);
 
                     if (newEnemy != null)
                     {
                         EnemyBase enemyBase = newEnemy.GetComponent<EnemyBase>();
 
-                        // ÊÖ¶¯ÖØÖÃ¹ÖÎï×´Ì¬
+                        // æ‰‹åŠ¨é‡ç½®æ€ªç‰©çŠ¶æ€
                         enemyBase.ResetEnemy();
 
-                        // ÖØĞÂ¶©ÔÄËÀÍöÊÂ¼ş£¨ÒòÎªResetÀïÇå¿ÕÁË£©
+                        // é‡æ–°è®¢é˜…æ­»äº¡äº‹ä»¶ï¼ˆå› ä¸ºReseté‡Œæ¸…ç©ºäº†ï¼‰
                         enemyBase.EnemyKilled += ScoreManager.Instance.AddScore;
                     }
                 }

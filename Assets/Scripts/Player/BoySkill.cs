@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class BoySkill : MonoBehaviour
 {
@@ -7,16 +7,16 @@ public class BoySkill : MonoBehaviour
     public AudioClip boyClip;
     private AudioSource audioSource;
 
-    [Header("¼¼ÄÜÅäÖÃ")]
+    [Header("æŠ€èƒ½é…ç½®")]
     public float cooldown = 15f;
     public int unlockLevel = 3;
-    public int maxCharge = 1;       // ÉÏÏŞ1
-    public int currentCharge = 1;   // ³õÊ¼¾ÍÓĞ1´Î
+    public int maxCharge = 1;       // ä¸Šé™1
+    public int currentCharge = 1;   // åˆå§‹å°±æœ‰1æ¬¡
 
-    // ×´Ì¬
+    // çŠ¶æ€
     private float currentCD;
 
-    //¿ÉÓÃ
+    //å¯ç”¨
     public bool useable = true;
 
     private void Awake()
@@ -37,16 +37,16 @@ public class BoySkill : MonoBehaviour
     void TryUseSkill()
     {
         bool unlocked = LevelSystem.Instance.currentLevel >= unlockLevel;
-        // ±ØĞë½âËø + ÓĞ´ÎÊı
+        // å¿…é¡»è§£é” + æœ‰æ¬¡æ•°
         if (!unlocked || currentCharge <= 0)
             return;
 
-        Debug.Log($"×¼±¸²¥·ÅÒôĞ§£¡boyClipÊÇ·ñÎª¿Õ£º{boyClip == null}");
+        Debug.Log($"å‡†å¤‡æ’­æ”¾éŸ³æ•ˆï¼boyClipæ˜¯å¦ä¸ºç©ºï¼š{boyClip == null}");
         if (boyClip != null)
             audioSource.PlayOneShot(boyClip);
         currentCharge--;
         KillAllEnemies();
-        Debug.Log("Ğ¡ÄĞº¢ºËµ¯ÒÑÊ¹ÓÃ£¡Ê£Óà´ÎÊı£º" + currentCharge);
+        Debug.Log("å°ç”·å­©æ ¸å¼¹å·²ä½¿ç”¨ï¼å‰©ä½™æ¬¡æ•°ï¼š" + currentCharge);
     }
 
     void KillAllEnemies()
@@ -61,7 +61,7 @@ public class BoySkill : MonoBehaviour
             }
         }
 
-        Debug.Log($"Ğ¡ÄĞº¢ºËµ¯±¬Õ¨£¡Çå¿ÕÁË {allEnemies.Length} ¸öµĞÈË£¡");
+        Debug.Log($"å°ç”·å­©æ ¸å¼¹çˆ†ç‚¸ï¼æ¸…ç©ºäº† {allEnemies.Length} ä¸ªæ•Œäººï¼");
     }
 
     public void AddCharge()
@@ -69,7 +69,7 @@ public class BoySkill : MonoBehaviour
         if (currentCharge < maxCharge)
         {
             currentCharge++;
-            Debug.Log("»ñµÃĞ¡ÄĞº¢´ÎÊı£¡µ±Ç°£º" + currentCharge);
+            Debug.Log("è·å¾—å°ç”·å­©æ¬¡æ•°ï¼å½“å‰ï¼š" + currentCharge);
         }
     }
 

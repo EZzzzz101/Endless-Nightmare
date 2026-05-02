@@ -1,33 +1,33 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Photon.Pun;
 
-// Áª»ú¹ÜÀíÆ÷£º¸ºÔğÁ¬½ÓPhoton·şÎñÆ÷£¬È«¾Öµ¥Àı
+// è”æœºç®¡ç†å™¨ï¼šè´Ÿè´£è¿æ¥PhotonæœåŠ¡å™¨ï¼Œå…¨å±€å•ä¾‹
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public static NetworkManager Instance;
 
     void Awake()
     {
-        // µ¥Àı£º±£Ö¤È«¾ÖÖ»ÓĞÒ»¸öNetworkManager
+        // å•ä¾‹ï¼šä¿è¯å…¨å±€åªæœ‰ä¸€ä¸ªNetworkManager
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        // ³¡¾°ÇĞ»»²»Ïú»Ù
+        // åœºæ™¯åˆ‡æ¢ä¸é”€æ¯
         DontDestroyOnLoad(gameObject);
-        // ºËĞÄ£ºËùÓĞÍæ¼ÒÍ¬²½¼ÓÔØ³¡¾°
+        // æ ¸å¿ƒï¼šæ‰€æœ‰ç©å®¶åŒæ­¥åŠ è½½åœºæ™¯
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     void Start()
     {
-        // Á¬½ÓPhoton·şÎñÆ÷
+        // è¿æ¥PhotonæœåŠ¡å™¨
         if (!PhotonNetwork.IsConnected)
         {
             PhotonNetwork.ConnectUsingSettings();
-            Debug.Log("ÕıÔÚÁ¬½ÓPhoton·şÎñÆ÷...");
+            Debug.Log("æ­£åœ¨è¿æ¥PhotonæœåŠ¡å™¨...");
         }
     }
 }

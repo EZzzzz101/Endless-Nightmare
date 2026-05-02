@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreUI : MonoBehaviour
 {
     public Text scoreText;
 
-    // °ÑAwake¸Ä³ÉStart,Start»áÔÚËùÓĞAwakeÖ´ĞĞÍêÖ®ºó²ÅÅÜ
+    // æŠŠAwakeæ”¹æˆStart,Startä¼šåœ¨æ‰€æœ‰Awakeæ‰§è¡Œå®Œä¹‹åæ‰è·‘
     void Start()
     {
         
@@ -21,7 +21,7 @@ public class ScoreUI : MonoBehaviour
         }
     }
 
-    //È¡Ïû¶©ÔÄ£¬·ÀÖ¹ÇĞ»»³¡¾°±¨´í
+    //å–æ¶ˆè®¢é˜…ï¼Œé˜²æ­¢åˆ‡æ¢åœºæ™¯æŠ¥é”™
     void OnDestroy()
     {
         if (ScoreManager.Instance != null)

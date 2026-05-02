@@ -1,27 +1,27 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro; 
 
 public class LevelSystem : MonoBehaviour
 {
-    [Header("»ù´¡µÈ¼¶ÉèÖÃ")]
+    [Header("åŸºç¡€ç­‰çº§è®¾ç½®")]
     public int currentLevel = 1;
     public float currentExp = 0f;
-    public float baseExpToNextLevel = 100f;  // 1¼¶Éı2¼¶ĞèÒª100¾­Ñé
-    public float expMultiplier = 1.2f;       // Ã¿¼¶Éı¼¶¾­Ñé¡Á1.2£¬Ô½ÍùºóÔ½ÄÑÉı
+    public float baseExpToNextLevel = 100f;  // 1çº§å‡2çº§éœ€è¦100ç»éªŒ
+    public float expMultiplier = 1.2f;       // æ¯çº§å‡çº§ç»éªŒÃ—1.2ï¼Œè¶Šå¾€åè¶Šéš¾å‡
 
-    [Header("UIÒıÓÃ")]
-    public Image expBarFill;                 // Êú°æ¾­ÑéÌõÌî³äImage
+    [Header("UIå¼•ç”¨")]
+    public Image expBarFill;                 // ç«–ç‰ˆç»éªŒæ¡å¡«å……Image
     public TMP_Text levelText; // TMP_Text                
 
 
-    // ¼ÆËãµ±Ç°Éı¼¶ËùĞè×Ü¾­Ñé
+    // è®¡ç®—å½“å‰å‡çº§æ‰€éœ€æ€»ç»éªŒ
     private float ExpToNextLevel => Mathf.Floor(baseExpToNextLevel * Mathf.Pow(expMultiplier, currentLevel - 1));
-    //µ¥ÀıÄ£Ê½
+    //å•ä¾‹æ¨¡å¼
     public static LevelSystem Instance;
     private void Awake()
     {
-        // µ¥Àı£º±£Ö¤³¡¾°ÀïÖ»ÓĞÒ»¸öLevelSystem
+        // å•ä¾‹ï¼šä¿è¯åœºæ™¯é‡Œåªæœ‰ä¸€ä¸ªLevelSystem
         if (Instance == null)
         {
             Instance = this;
@@ -33,41 +33,41 @@ public class LevelSystem : MonoBehaviour
     }
     private void Start()
     {
-        // ³õÊ¼»¯UI£ºÏÔÊ¾1¼¶£¬¾­ÑéÌõ0%
+        // åˆå§‹åŒ–UIï¼šæ˜¾ç¤º1çº§ï¼Œç»éªŒæ¡0%
         UpdateUI();
     }
 
     /// <summary>
-    /// É±¹Öºóµ÷ÓÃÕâ¸ö·½·¨£¬¸øÍæ¼Ò¼Ó¾­Ñé
+    /// æ€æ€ªåè°ƒç”¨è¿™ä¸ªæ–¹æ³•ï¼Œç»™ç©å®¶åŠ ç»éªŒ
     /// </summary>
-    /// <param name="expAmount">É±¹Ö»ñµÃµÄ¾­ÑéÖµ</param>
+    /// <param name="expAmount">æ€æ€ªè·å¾—çš„ç»éªŒå€¼</param>
     public void AddExp(float expAmount)
     {
         currentExp += expAmount;
 
-        // ¼ì²éÊÇ·ñ¿ÉÒÔÉı¼¶
+        // æ£€æŸ¥æ˜¯å¦å¯ä»¥å‡çº§
         while (currentExp >= ExpToNextLevel)
         {
-            // ¿Û³ıÉı¼¶ËùĞè¾­Ñé
+            // æ‰£é™¤å‡çº§æ‰€éœ€ç»éªŒ
             currentExp -= ExpToNextLevel;
-            // µÈ¼¶+1
+            // ç­‰çº§+1
             currentLevel++;
         }
 
-        // ¸üĞÂUI
+        // æ›´æ–°UI
         UpdateUI();
     }
 
     /// <summary>
-    /// ¸üĞÂ¾­ÑéÌõºÍµÈ¼¶Êı×Ö
+    /// æ›´æ–°ç»éªŒæ¡å’Œç­‰çº§æ•°å­—
     /// </summary>
     private void UpdateUI()
     {
-        // 1. ¸üĞÂ¾­ÑéÌõÌî³äÁ¿£¨0~1£¬¶ÔÓ¦0%~100%£©
+        // 1. æ›´æ–°ç»éªŒæ¡å¡«å……é‡ï¼ˆ0~1ï¼Œå¯¹åº”0%~100%ï¼‰
         float fillAmount = currentExp / ExpToNextLevel;
         expBarFill.fillAmount = fillAmount;
 
-        // 2. ¸üĞÂµÈ¼¶Êı×Ö
+        // 2. æ›´æ–°ç­‰çº§æ•°å­—
         levelText.text = currentLevel.ToString();
     }
 }

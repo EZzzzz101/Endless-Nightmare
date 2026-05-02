@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -8,9 +8,9 @@ public class ObjectPool : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public string tag;          // ³Ø×Ó±êÇ©
-        public GameObject prefab;   // ¹ÖÎïÔ¤ÖÆÌå
-        public int preloadCount;    // Ô¤Éú³ÉÊıÁ¿
+        public string tag;          // æ± å­æ ‡ç­¾
+        public GameObject prefab;   // æ€ªç‰©é¢„åˆ¶ä½“
+        public int preloadCount;    // é¢„ç”Ÿæˆæ•°é‡
     }
 
     public List<Pool> pools = new List<Pool>();
@@ -23,7 +23,7 @@ public class ObjectPool : MonoBehaviour
 
     private void Start()
     {
-        // ±éÀúËùÓĞÅäÖÃµÄ³Ø×Ó£¬Ô¤Éú³ÉÎïÌå
+        // éå†æ‰€æœ‰é…ç½®çš„æ± å­ï¼Œé¢„ç”Ÿæˆç‰©ä½“
         foreach (Pool pool in pools)
         {
             Queue<GameObject> objectQueue = new Queue<GameObject>();
@@ -31,7 +31,7 @@ public class ObjectPool : MonoBehaviour
             for (int i = 0; i < pool.preloadCount; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(false); // Ô¤Éú³ÉÊ±Ê§»î
+                obj.SetActive(false); // é¢„ç”Ÿæˆæ—¶å¤±æ´»
                 objectQueue.Enqueue(obj);
             }
 
@@ -39,33 +39,33 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    // ¡¾ºËĞÄ·½·¨1¡¿´Ó³Ø×ÓÈ¡³öÎïÌå
+    // ã€æ ¸å¿ƒæ–¹æ³•1ã€‘ä»æ± å­å–å‡ºç‰©ä½“
     public GameObject GetFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
-            Debug.LogWarning($"ÕÒ²»µ½±êÇ©Îª {tag} µÄ¶ÔÏó³Ø£¡");
+            Debug.LogWarning($"æ‰¾ä¸åˆ°æ ‡ç­¾ä¸º {tag} çš„å¯¹è±¡æ± ï¼");
             return null;
         }
 
-        // ´Ó¶ÓÁĞÈ¡³ö
+        // ä»é˜Ÿåˆ—å–å‡º
         GameObject objToUse = poolDictionary[tag].Dequeue();
 
-        // ¼¤»î²¢ÉèÖÃÎ»ÖÃ
+        // æ¿€æ´»å¹¶è®¾ç½®ä½ç½®
         objToUse.SetActive(true);
         objToUse.transform.position = position;
         objToUse.transform.rotation = rotation;
 
-        // È¡³öºóÁ¢¿Ì·Å»Ø¶ÓÁĞÄ©Î²
+        // å–å‡ºåç«‹åˆ»æ”¾å›é˜Ÿåˆ—æœ«å°¾
         poolDictionary[tag].Enqueue(objToUse);
 
         return objToUse;
     }
 
-    // ¡¾ºËĞÄ·½·¨2¡¿°ÑÎïÌå·Å»Ø³Ø×Ó£¨ÓÉEnemyBaseµ÷ÓÃ£©
+    // ã€æ ¸å¿ƒæ–¹æ³•2ã€‘æŠŠç‰©ä½“æ”¾å›æ± å­ï¼ˆç”±EnemyBaseè°ƒç”¨ï¼‰
     public void ReturnToPool(string tag, GameObject obj)
     {
         obj.SetActive(false);
-        // ²»ĞèÒªÊÖ¶¯Enqueue£¬ÒòÎªËüÒÑ¾­ÔÚStartµÄ¶ÓÁĞÀïÁË
+        // ä¸éœ€è¦æ‰‹åŠ¨Enqueueï¼Œå› ä¸ºå®ƒå·²ç»åœ¨Startçš„é˜Ÿåˆ—é‡Œäº†
     }
 }

@@ -1,5 +1,5 @@
-public static class GameEvent
+ï»¿public static class GameEvent
 {
-    // ¿ªÇ¹ÊÂ¼þ
+    // å¼€æžªäº‹ä»¶
     public static System.Action OnGunShot;
 }

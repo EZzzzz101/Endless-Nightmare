@@ -3,24 +3,52 @@
   "WorkspaceRootPath": "E:\\Unity Projects\\Endless Nightmare\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\player\\playshooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playshooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\ui\\healthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\healthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\system\\levelsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\system\\levelsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\managers\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\ui\\scoreui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\scoreui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\player\\playshooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playshooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\system\\skillsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\system\\skillsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\enemy\\enemybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\managers\\enemymanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\enemymanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\player\\boyskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\boyskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\event\\gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\event\\gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\enemy\\enemybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\system\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\system\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\enemy\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\system\\levelsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\system\\levelsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\player\\ultimateflashskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,52 +71,20 @@
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\zombunny.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\enemy\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\system\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\system\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\ui\\healthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\healthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\player\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\camera\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camera\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\ui\\scoreui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\scoreui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\managers\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\enemy\\istate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\istate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\event\\gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\event\\gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|e:\\unity projects\\endless nightmare\\assets\\scripts\\ui\\uilobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\ui\\uilobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uilobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\managers\\enemymanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\enemymanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E43531FB-2B64-D9A3-799C-0611FFACE660}|Assembly-CSharp.csproj|E:\\Unity Projects\\Endless Nightmare\\assets\\scripts\\enemy\\hellephant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -121,6 +117,168 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayShooting.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\PlayShooting.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayShooting.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\PlayShooting.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayShooting.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAswAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T09:23:19.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScoreUI.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\ScoreUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ScoreUI.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\ScoreUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\ScoreUI.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwAUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T03:15:31.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ObjectPool.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\ObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\System\\ObjectPool.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\ObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\System\\ObjectPool.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T11:25:58.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EnemyBase.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyBase.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\EnemyBase.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAMBjwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T15:47:59.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameEvent.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Event\\GameEvent.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Event\\GameEvent.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Event\\GameEvent.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Event\\GameEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T12:16:31.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BoySkill.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\BoySkill.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\BoySkill.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\BoySkill.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\BoySkill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T07:34:59.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HealthUI.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\HealthUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\HealthUI.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\HealthUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\HealthUI.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAswFQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T17:23:19.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NetworkManager.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\NetworkManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\NetworkManager.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\NetworkManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\NetworkManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T08:37:28.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SkillSystem.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\SkillSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\System\\SkillSystem.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\SkillSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\System\\SkillSystem.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwDkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T16:49:09.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnemyManger.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\EnemyManger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\EnemyManger.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\EnemyManger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\EnemyManger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T16:38:50.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FastChargeSkill.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\FastChargeSkill.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\FastChargeSkill.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\FastChargeSkill.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\FastChargeSkill.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T07:35:03.796Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UltimateFlashSkill.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAABSwD0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T07:35:07.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Zombunny.cs",
+              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\Zombunny.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Zombunny.cs",
+              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\Zombunny.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Zombunny.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAIBVwEwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T16:05:57.819Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "FSM.cs",
@@ -130,116 +288,23 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\FSM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T07:03:09.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-02T07:03:09.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "ZomBear.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\ZomBear.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\ZomBear.cs",
               "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\ZomBear.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\ZomBear.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAABiwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T16:18:37.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-01T16:18:37.282Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EnemyBase.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyBase.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyBase.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyBase.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy\\EnemyBase.cs",
-              "ViewState": "AgIAAAABAAAAAAAAAAAqwPwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T15:47:59.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Zombunny.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\Zombunny.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Zombunny.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\Zombunny.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Zombunny.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAAAEwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T16:05:57.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BoySkill.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\BoySkill.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\BoySkill.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\BoySkill.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\BoySkill.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAwwDsAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T07:34:59.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UltimateFlashSkill.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\UltimateFlashSkill.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAAD0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T07:35:07.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FastChargeSkill.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\FastChargeSkill.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\FastChargeSkill.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\FastChargeSkill.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\FastChargeSkill.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAYwDQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T07:35:03.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayShooting.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\PlayShooting.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayShooting.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\PlayShooting.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayShooting.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAswD8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T09:23:19.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SkillSystem.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\SkillSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\System\\SkillSystem.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\SkillSystem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\System\\SkillSystem.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAywDkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T16:49:09.056Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "LevelSystem.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\LevelSystem.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\System\\LevelSystem.cs",
@@ -247,25 +312,11 @@
               "RelativeToolTip": "Assets\\Scripts\\System\\LevelSystem.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAwwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T15:36:38.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-02T15:36:38.969Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ObjectPool.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\ObjectPool.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\System\\ObjectPool.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\ObjectPool.cs",
-              "RelativeToolTip": "Assets\\Scripts\\System\\ObjectPool.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAYwAoAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T11:25:58.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "SkillUIManager.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\System\\SkillUIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\System\\SkillUIManager.cs",
@@ -273,25 +324,11 @@
               "RelativeToolTip": "Assets\\Scripts\\System\\SkillUIManager.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAkwCEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T07:34:00.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-03T07:34:00.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "HealthUI.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\HealthUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\HealthUI.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\HealthUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\HealthUI.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA0wCwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T17:23:19.2Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "PlayerHealth.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\PlayerHealth.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerHealth.cs",
@@ -299,25 +336,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerHealth.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAA0wCkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T10:28:02.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-01T10:28:02.468Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CameraFollow.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Camera\\CameraFollow.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Camera\\CameraFollow.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Camera\\CameraFollow.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Camera\\CameraFollow.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAkwBkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T07:54:39.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",
@@ -325,38 +348,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerMovement.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAkwD4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T06:09:08.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-31T06:09:08.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ScoreUI.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\ScoreUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ScoreUI.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\UI\\ScoreUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\ScoreUI.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAkwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T03:15:31.818Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ScoreManager.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\ScoreManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\ScoreManager.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\ScoreManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Managers\\ScoreManager.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAkwBcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T03:25:51.11Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "IState.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\IState.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\IState.cs",
@@ -364,21 +360,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\IState.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T07:01:50.928Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "GameEvent.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Event\\GameEvent.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Event\\GameEvent.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Event\\GameEvent.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Event\\GameEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T12:16:31.877Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-02T07:01:50.928Z"
             },
             {
               "$type": "Document",
@@ -390,24 +372,11 @@
               "RelativeToolTip": "Assets\\Scripts\\UI\\UILobby.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAkwBMAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T13:34:36.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-03T13:34:36.541Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 21,
-              "Title": "EnemyManger.cs",
-              "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\EnemyManger.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\EnemyManger.cs",
-              "ToolTip": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Managers\\EnemyManger.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Managers\\EnemyManger.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAywA8AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T16:38:50.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
               "Title": "Hellephant.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\Hellephant.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Hellephant.cs",
@@ -419,7 +388,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "EnemyAttack.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyAttack.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyAttack.cs",
@@ -431,7 +400,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "EnemyHealth.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyHealth.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyHealth.cs",
@@ -443,7 +412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "EnemyMovement.cs",
               "DocumentMoniker": "E:\\Unity Projects\\Endless Nightmare\\Assets\\Scripts\\Enemy\\EnemyMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyMovement.cs",

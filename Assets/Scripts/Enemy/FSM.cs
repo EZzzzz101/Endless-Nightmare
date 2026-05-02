@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FSM
 {
-    //���ڵ�״̬
+    //现在的状态
     public IState CurrentState {  get; private set; }
     
-    //�л�״̬
+    //切换状态
     public void SwitchState(IState newState)
     {
         CurrentState?.Exit();
@@ -13,7 +13,7 @@ public class FSM
         CurrentState.Enter();
     }
 
-    //����״̬
+    //更新状态
     public void Update()
     {
         CurrentState?.Update();

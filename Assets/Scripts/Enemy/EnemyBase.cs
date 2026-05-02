@@ -1,50 +1,50 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class EnemyBase : MonoBehaviour
 {
 
-    [Header("¡¾¶ÔÏó³Ø±êÇ©¡¿")]
+    [Header("ã€å¯¹è±¡æ± æ ‡ç­¾ã€‘")]
     public string poolTag;
 
-    protected NavMeshAgent agent;       // Ñ°Â·×é¼ş
-    protected Animator anim;             // ¶¯»­×é¼ş
-    protected AudioSource enemyAudio;    // ÒôĞ§×é¼ş
-    protected ParticleSystem hitParticle;// ÊÜ»÷Á£×Ó
-    protected CapsuleCollider capsuleCollider; // Åö×²Ìå
-    protected Rigidbody rb;             // ¸ÕÌå
+    protected NavMeshAgent agent;       // å¯»è·¯ç»„ä»¶
+    protected Animator anim;             // åŠ¨ç”»ç»„ä»¶
+    protected AudioSource enemyAudio;    // éŸ³æ•ˆç»„ä»¶
+    protected ParticleSystem hitParticle;// å—å‡»ç²’å­
+    protected CapsuleCollider capsuleCollider; // ç¢°æ’ä½“
+    protected Rigidbody rb;             // åˆšä½“
 
-    protected Transform targetPlayer;    // Íæ¼ÒµÄÎ»ÖÃ£¬ËùÓĞ¹Ö¶¼Òª×·Íæ¼Ò
-    protected PlayerHealth playerHealth; // Íæ¼ÒµÄÑªÁ¿½Å±¾£¬¹¥»÷Òª¿ÛÑª
+    protected Transform targetPlayer;    // ç©å®¶çš„ä½ç½®ï¼Œæ‰€æœ‰æ€ªéƒ½è¦è¿½ç©å®¶
+    protected PlayerHealth playerHealth; // ç©å®¶çš„è¡€é‡è„šæœ¬ï¼Œæ”»å‡»è¦æ‰£è¡€
 
-    [Header("¡¾¹ÖÎï»ù´¡ÊôĞÔ¡¿")]
-    public float maxHealth = 100f;       // ×î´óÑªÁ¿
-    public float attackDamage = 50f;      // ¹¥»÷Á¦
-    public float timeBetweenAttacks = 1f; // ¹¥»÷¼ä¸ô
-    public float moveSpeed = 3.5f;        // ÒÆËÙ
-    public AudioClip deathClip;           // ËÀÍöÒôĞ§
+    [Header("ã€æ€ªç‰©åŸºç¡€å±æ€§ã€‘")]
+    public float maxHealth = 100f;       // æœ€å¤§è¡€é‡
+    public float attackDamage = 50f;      // æ”»å‡»åŠ›
+    public float timeBetweenAttacks = 1f; // æ”»å‡»é—´éš”
+    public float moveSpeed = 3.5f;        // ç§»é€Ÿ
+    public AudioClip deathClip;           // æ­»äº¡éŸ³æ•ˆ
 
 
-    [Header("¡¾×´Ì¬±äÁ¿¡¿²»ÓÃÊÖ¶¯¸Ä")]
-    protected float currentHealth;    // µ±Ç°ÑªÁ¿
-    protected bool isDead;            // ÊÇ·ñËÀÍö
+    [Header("ã€çŠ¶æ€å˜é‡ã€‘ä¸ç”¨æ‰‹åŠ¨æ”¹")]
+    protected float currentHealth;    // å½“å‰è¡€é‡
+    protected bool isDead;            // æ˜¯å¦æ­»äº¡
     public bool IsDead => isDead;
-    protected bool playerInRange;     // Íæ¼ÒÊÇ·ñÔÚ¹¥»÷·¶Î§ÄÚ
-    protected float attackTimer;      // ¹¥»÷¼ÆÊ±
-    protected bool isSinking;         // ÊÇ·ñÕıÔÚÏÂ³Á
+    protected bool playerInRange;     // ç©å®¶æ˜¯å¦åœ¨æ”»å‡»èŒƒå›´å†…
+    protected float attackTimer;      // æ”»å‡»è®¡æ—¶
+    protected bool isSinking;         // æ˜¯å¦æ­£åœ¨ä¸‹æ²‰
 
-    // ¶¨Òå¹ÖÎïËÀÍöÎ¯ÍĞ
+    // å®šä¹‰æ€ªç‰©æ­»äº¡å§”æ‰˜
     public delegate void OnEnemyKilled(int killScore);
-    // ¶¨Òå¹ÖÎïËÀÍöÊÂ¼ş
+    // å®šä¹‰æ€ªç‰©æ­»äº¡äº‹ä»¶
     public event OnEnemyKilled EnemyKilled;
 
-    [Header("»÷É±·ÖÊı")]
+    [Header("å‡»æ€åˆ†æ•°")]
     public int killScore = 10;
 
-    //virtual¿É¸Ä
+    //virtualå¯æ”¹
     protected virtual void Awake()
     {
-        // 1. ×Ô¶¯»ñÈ¡ÎïÌåÉÏµÄËùÓĞ×é¼ş
+        // 1. è‡ªåŠ¨è·å–ç‰©ä½“ä¸Šçš„æ‰€æœ‰ç»„ä»¶
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         enemyAudio = GetComponent<AudioSource>();
@@ -52,7 +52,7 @@ public abstract class EnemyBase : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
 
-        // 2. ×Ô¶¯ÕÒµ½³¡¾°ÀïµÄÍæ¼Ò
+        // 2. è‡ªåŠ¨æ‰¾åˆ°åœºæ™¯é‡Œçš„ç©å®¶
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
         {
@@ -61,38 +61,38 @@ public abstract class EnemyBase : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Ã»ÕÒµ½Íæ¼Ò£¡ÇëÈ·ÈÏÍæ¼ÒµÄTagÊÇPlayer");
+            Debug.LogError("æ²¡æ‰¾åˆ°ç©å®¶ï¼è¯·ç¡®è®¤ç©å®¶çš„Tagæ˜¯Player");
         }
 
-        // 3. ³õÊ¼»¯ÑªÁ¿
+        // 3. åˆå§‹åŒ–è¡€é‡
         currentHealth = maxHealth;
     }
 
-    // ------------------ ¡¾ĞÂÔö¡¿¶ÔÏó³Ø¸´ÓÃ£ºÖØÖÃ¹ÖÎï×´Ì¬ ------------------
+    // ------------------ ã€æ–°å¢ã€‘å¯¹è±¡æ± å¤ç”¨ï¼šé‡ç½®æ€ªç‰©çŠ¶æ€ ------------------
     public void ResetEnemy()
     {
-        // 1. ÖØÖÃ×´Ì¬±äÁ¿
+        // 1. é‡ç½®çŠ¶æ€å˜é‡
         isDead = false;
         isSinking = false;
         playerInRange = false;
         currentHealth = maxHealth;
         attackTimer = 0;
 
-        // 2. ÖØÖÃ×é¼ş
+        // 2. é‡ç½®ç»„ä»¶
         agent.enabled = true;
-        agent.speed = moveSpeed; // »Ö¸´ÒÆ¶¯ËÙ¶È
+        agent.speed = moveSpeed; // æ¢å¤ç§»åŠ¨é€Ÿåº¦
         capsuleCollider.isTrigger = false;
         rb.isKinematic = false;
 
-        // 3. ÖØÖÃ¶¯»­£¨Çå³ıËùÓĞTrigger£¬ÖØÖÃµ½Idle×´Ì¬£©
+        // 3. é‡ç½®åŠ¨ç”»ï¼ˆæ¸…é™¤æ‰€æœ‰Triggerï¼Œé‡ç½®åˆ°IdleçŠ¶æ€ï¼‰
         anim.Rebind();
         anim.Update(0f);
 
-        // 4. Í£Ö¹ËùÓĞÁ£×ÓºÍÒôĞ§
+        // 4. åœæ­¢æ‰€æœ‰ç²’å­å’ŒéŸ³æ•ˆ
         if (hitParticle.isPlaying) hitParticle.Stop();
         if (enemyAudio.isPlaying) enemyAudio.Stop();
 
-        // 5. ÖØÖÃÎ»ÖÃ£¨ËäÈ»È¡³öÀ´»áÉè£¬µ«ÕâÀï¶àÒ»²ã±£ÏÕ£©
+        // 5. é‡ç½®ä½ç½®ï¼ˆè™½ç„¶å–å‡ºæ¥ä¼šè®¾ï¼Œä½†è¿™é‡Œå¤šä¸€å±‚ä¿é™©ï¼‰
         transform.rotation = Quaternion.identity;
     }
     // -------------------------------------------------------------------
@@ -100,10 +100,10 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        // Èç¹û¹ÖÒÑ¾­ËÀÁË£¬¾Í²»Ö´ĞĞÈÎºÎÂß¼­
+        // å¦‚æœæ€ªå·²ç»æ­»äº†ï¼Œå°±ä¸æ‰§è¡Œä»»ä½•é€»è¾‘
         if (isDead)
         {
-            // ËÀÍöºóÏÂ³Á
+            // æ­»äº¡åä¸‹æ²‰
             if (isSinking)
             {
                 transform.Translate(-transform.up * Time.deltaTime * 1.5f);
@@ -115,65 +115,65 @@ public abstract class EnemyBase : MonoBehaviour
 
         if (playerHealth != null && !playerHealth.PlayerIsDeath)
         {
-            ChasePlayer(); // ×·»÷Íæ¼Ò
+            ChasePlayer(); // è¿½å‡»ç©å®¶
         }
         else
         {
-            Idle(); // Íæ¼ÒËÀÁË¾Í´ı»ú
+            Idle(); // ç©å®¶æ­»äº†å°±å¾…æœº
         }
 
-        // Í¨ÓÃ¹¥»÷Âß¼­
+        // é€šç”¨æ”»å‡»é€»è¾‘
         if (playerInRange && attackTimer >= timeBetweenAttacks)
         {
             Attack();
         }
     }
 
-    // ×·»÷Íæ¼Ò
+    // è¿½å‡»ç©å®¶
     protected void ChasePlayer()
     {
         agent.SetDestination(targetPlayer.position);
     }
 
-    // Íæ¼ÒËÀÁË¾Í²»¶¯
+    // ç©å®¶æ­»äº†å°±ä¸åŠ¨
     protected void Idle()
     {
         agent.speed = 0;
         agent.SetDestination(transform.position);
     }
 
-    //ËùÓĞ¹ÖµÄ»ù´¡¹¥»÷Âß¼­
+    //æ‰€æœ‰æ€ªçš„åŸºç¡€æ”»å‡»é€»è¾‘
     protected virtual void Attack()
     {
-        //Íæ¼ÒËÀÁË¾Í²»¹¥»÷
+        //ç©å®¶æ­»äº†å°±ä¸æ”»å‡»
         if (playerHealth.PlayerIsDeath) return;
 
         attackTimer = 0f;
         playerHealth.PlayerTakeDamage(attackDamage);
     }
 
-    //ËùÓĞ¹ÖµÄ»ù´¡ÊÜ»÷Âß¼­
+    //æ‰€æœ‰æ€ªçš„åŸºç¡€å—å‡»é€»è¾‘
     public virtual void TakeDamage(float damage, Vector3 hitPoint)
     {
-        // ËÀÁË¾Í²»ÔÙÊÜÉË
+        // æ­»äº†å°±ä¸å†å—ä¼¤
         if (isDead) return;
 
-        // ²¥·ÅÊÜ»÷ÒôĞ§ºÍÁ£×Ó
+        // æ’­æ”¾å—å‡»éŸ³æ•ˆå’Œç²’å­
         enemyAudio.Play();
         hitParticle.transform.position = hitPoint;
         hitParticle.Play();
 
-        // ¿ÛÑª
+        // æ‰£è¡€
         currentHealth -= damage;
 
-        // ÑªÁ¿¹é0¾ÍËÀÍö
+        // è¡€é‡å½’0å°±æ­»äº¡
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    // ËùÓĞ¹ÖµÄËÀÍö(»ØÊÕ)Âß¼­
+    // æ‰€æœ‰æ€ªçš„æ­»äº¡(å›æ”¶)é€»è¾‘
     protected virtual void Die()
     {
         isDead = true;
@@ -183,54 +183,54 @@ public abstract class EnemyBase : MonoBehaviour
             LevelSystem.Instance.AddExp(50f); 
         }
 
-        // ²¥·ÅËÀÍö¶¯»­
+        // æ’­æ”¾æ­»äº¡åŠ¨ç”»
         anim.SetTrigger("Death");
 
-        // ¹Ø±ÕÑ°Â·¡¢¹Ø±ÕÎïÀí
+        // å…³é—­å¯»è·¯ã€å…³é—­ç‰©ç†
         agent.enabled = false;
         capsuleCollider.isTrigger = true;
         rb.isKinematic = true;
 
-        // ²¥·ÅËÀÍöÒôĞ§
+        // æ’­æ”¾æ­»äº¡éŸ³æ•ˆ
         if (deathClip != null)
         {
             enemyAudio.clip = deathClip;
             enemyAudio.Play();
         }
-        // ·¢²¼±»»÷É±Í¨Öª
+        // å‘å¸ƒè¢«å‡»æ€é€šçŸ¥
         EnemyKilled?.Invoke(killScore);
 
-        // ÏÂ³Á
+        // ä¸‹æ²‰
         StartSinking();
     }
 
-    //ÏÂ³ÁÏú»Ù
+    //ä¸‹æ²‰é”€æ¯
     protected void StartSinking()
     {
         isSinking = true;
         //Destroy(gameObject, 2f);
-        //µ÷ÓÃ»ØÊÕ
+        //è°ƒç”¨å›æ”¶
         Invoke(nameof(ReturnToPoolDelayed), 2f);
     }
 
     private void ReturnToPoolDelayed()
     {
-        // ÖØÒª£º»ØÊÕÇ°ÏÈ°ÑÊÂ¼şÇå¿Õ£¬±ÜÃâÏÂ´Î¸´ÓÃÊ±ÖØ¸´´¥·¢
+        // é‡è¦ï¼šå›æ”¶å‰å…ˆæŠŠäº‹ä»¶æ¸…ç©ºï¼Œé¿å…ä¸‹æ¬¡å¤ç”¨æ—¶é‡å¤è§¦å‘
         EnemyKilled = null;
 
-        // µ÷ÓÃ¶ÔÏó³Ø»ØÊÕ
+        // è°ƒç”¨å¯¹è±¡æ± å›æ”¶
         if (!string.IsNullOrEmpty(poolTag))
         {
             ObjectPool.Instance.ReturnToPool(poolTag, this.gameObject);
         }
         else
         {
-            Debug.LogWarning("¹ÖÎïµÄPoolTagÃ»Ìî£¡", this);
-            Destroy(gameObject); // Ã»ÌîTag¾Í»¹ÊÇÏú»Ù£¬±ÜÃâ±¨´í
+            Debug.LogWarning("æ€ªç‰©çš„PoolTagæ²¡å¡«ï¼", this);
+            Destroy(gameObject); // æ²¡å¡«Tagå°±è¿˜æ˜¯é”€æ¯ï¼Œé¿å…æŠ¥é”™
         }
     }
 
-    // Íæ¼Ò½øÈë¹¥»÷·¶Î§
+    // ç©å®¶è¿›å…¥æ”»å‡»èŒƒå›´
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -239,7 +239,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    // Íæ¼ÒÀë¿ª¹¥»÷·¶Î§
+    // ç©å®¶ç¦»å¼€æ”»å‡»èŒƒå›´
     protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -260,18 +260,18 @@ public abstract class EnemyBase : MonoBehaviour
                 LevelSystem.Instance.AddExp(50f);
             }
 
-            // ²¥·ÅËÀÍö¶¯»­
+            // æ’­æ”¾æ­»äº¡åŠ¨ç”»
             anim.SetTrigger("Death");
 
-            // ¹Ø±ÕÑ°Â·¡¢¹Ø±ÕÎïÀí
+            // å…³é—­å¯»è·¯ã€å…³é—­ç‰©ç†
             agent.enabled = false;
             capsuleCollider.isTrigger = true;
             rb.isKinematic = true;
 
-            // ·¢²¼±»»÷É±Í¨Öª
+            // å‘å¸ƒè¢«å‡»æ€é€šçŸ¥
             EnemyKilled?.Invoke(killScore);
 
-            // ÏÂ³Á
+            // ä¸‹æ²‰
             StartSinking();
         }
     }

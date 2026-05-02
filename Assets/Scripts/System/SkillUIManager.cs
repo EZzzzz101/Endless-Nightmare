@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillUIManager : MonoBehaviour
 {
     public static SkillUIManager Instance;
 
-    [Header("UI ÍÏ×§")]
+    [Header("UI æ‹–æ‹½")]
     public Image fastChargeIcon;
     public Text fastChargeText;
 
@@ -22,11 +22,11 @@ public class SkillUIManager : MonoBehaviour
 
     private void Update()
     {
-        // ×Ô¶¯¸üĞÂÖÕ¼«ÉÁ¹â£¨ÒòÎªÄÜÁ¿³ÖĞø±ä»¯£©
+        // è‡ªåŠ¨æ›´æ–°ç»ˆæé—ªå…‰ï¼ˆå› ä¸ºèƒ½é‡æŒç»­å˜åŒ–ï¼‰
         UpdateUltimateUI();
     }
 
-    // E ¼¼ÄÜ
+    // E æŠ€èƒ½
     public void UpdateFastChargeUI()
     {
         var skill = FastChargeSkill.Instance;
@@ -50,7 +50,7 @@ public class SkillUIManager : MonoBehaviour
         }
     }
 
-    // ÖÕ¼«ÉÁ¹â
+    // ç»ˆæé—ªå…‰
     void UpdateUltimateUI()
     {
         var skill = UltimateFlashSkill.Instance;
@@ -66,7 +66,7 @@ public class SkillUIManager : MonoBehaviour
         flashText.text = percent + "%";
     }
 
-    // Q ¼¼ÄÜ
+    // Q æŠ€èƒ½
     public void UpdateBoyUI()
     {
         var skill = BoySkill.Instance;

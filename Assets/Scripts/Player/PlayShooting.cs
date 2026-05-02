@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 
 public class PlayerShooting : MonoBehaviour
@@ -12,12 +12,12 @@ public class PlayerShooting : MonoBehaviour
     public LineRenderer gunLine;
     private ParticleSystem gunParticle;
 
-    //¶¨Òåray mask hit
+    //å®šä¹‰ray mask hit
     private Ray shootRay;
     private RaycastHit shootHit;
     private int shootMask;
 
-    //¶¨ÒåÎäÆ÷ÉËº¦¼°±¶ÂÊ
+    //å®šä¹‰æ­¦å™¨ä¼¤å®³åŠå€ç‡
     public int baseDamage;
     public float dmgMulti = 1f;
 
@@ -35,21 +35,21 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        //Âß¼­²ã 
-        //ÏÈÅĞ¶ÏÊÇ·ñÔÚ¼¤¹â×´Ì¬
+        //é€»è¾‘å±‚ 
+        //å…ˆåˆ¤æ–­æ˜¯å¦åœ¨æ¿€å…‰çŠ¶æ€
         if (UltimateFlashSkill.Instance.isFiring)
         {
-            Debug.Log("¼¤¹â·¢ÉäÖĞ");
-            // ¿ªÆôÉäÏß
+            Debug.Log("æ¿€å…‰å‘å°„ä¸­");
+            // å¼€å¯å°„çº¿
             gunLine.enabled = true;
             gunLine.SetPosition(0, transform.position);
 
-            // ÉèÖÃÑÕÉ« + ´ÖÏ¸
+            // è®¾ç½®é¢œè‰² + ç²—ç»†
             gunLine.material.color = UltimateFlashSkill.Instance.laserColor;
             gunLine.startWidth = UltimateFlashSkill.Instance.laserWidth;
             gunLine.endWidth = UltimateFlashSkill.Instance.laserWidth;
 
-            // ÉäÏß³¤¶È
+            // å°„çº¿é•¿åº¦
             Ray ray = new Ray(transform.position, transform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, 100))
             {
@@ -60,10 +60,10 @@ public class PlayerShooting : MonoBehaviour
                 gunLine.SetPosition(1, transform.position + transform.forward * 100);
             }
 
-            // ¼¤¹âÆÚ¼ä²»ÏÔÊ¾ÆÕÍ¨Ç¹¿ÚµÆ¹â
+            // æ¿€å…‰æœŸé—´ä¸æ˜¾ç¤ºæ™®é€šæªå£ç¯å…‰
             gunLight.enabled = false;
         }
-        //Éä»÷×´Ì¬
+        //å°„å‡»çŠ¶æ€
         else
         {
             if (Input.GetMouseButton(0) && timer >= timeBetweenBullets!)
@@ -77,8 +77,8 @@ public class PlayerShooting : MonoBehaviour
                 gunLine.enabled = false;
             }
         }
-        //ÉäÏß(¼ì²âÎ»ÖÃ)
-        //±íÏÖ²ã(·¢ÉäÌØĞ§£¬»÷ÖĞÌØĞ§£¬ÒôĞ§)
+        //å°„çº¿(æ£€æµ‹ä½ç½®)
+        //è¡¨ç°å±‚(å‘å°„ç‰¹æ•ˆï¼Œå‡»ä¸­ç‰¹æ•ˆï¼ŒéŸ³æ•ˆ)
 
     }
 
@@ -88,21 +88,21 @@ public class PlayerShooting : MonoBehaviour
         GameEvent.OnGunShot?.Invoke();
         timer = 0;
 
-        //Æô¶¯µÆ¹â
+        //å¯åŠ¨ç¯å…‰
         gunLight.enabled = true;
-        //Æô¶¯ÒôĞ§
+        //å¯åŠ¨éŸ³æ•ˆ
         gunAudio.Play();
-        //Æô¶¯Á£×Ó
+        //å¯åŠ¨ç²’å­
         gunParticle.Play();
 
-        // ¼±ËÙ³äÄÜ£¨E£©
+        // æ€¥é€Ÿå……èƒ½ï¼ˆEï¼‰
         if (FastChargeSkill.Instance != null && FastChargeSkill.Instance.isBuffed)
         {
             gunLine.material.color = Color.red;
             gunLine.startWidth = 0.1f;
             gunLine.endWidth = 0.1f;
         }
-        // ÆÕÍ¨×´Ì¬
+        // æ™®é€šçŠ¶æ€
         else
         {
             gunLine.material.color = Color.yellow;
@@ -110,22 +110,22 @@ public class PlayerShooting : MonoBehaviour
             gunLine.endWidth = 0.05f;
         }
 
-        //·¢ÉäÉäÏß
+        //å‘å°„å°„çº¿
         gunLine.SetPosition(0, transform.position);
-        //Æô¶¯ÉäÏß¿ª¹Ø
+        //å¯åŠ¨å°„çº¿å¼€å…³
         gunLine.enabled = true;
-        //ÉäÏß¼ì²âÊÇ·ñÃüÖĞ
-        //³ö·¢µã
+        //å°„çº¿æ£€æµ‹æ˜¯å¦å‘½ä¸­
+        //å‡ºå‘ç‚¹
         shootRay.origin = transform.position;
-        //·½Ïò
+        //æ–¹å‘
         shootRay.direction = transform.forward;
         if (Physics.Raycast(shootRay.origin, shootRay.direction, out shootHit, 100, -1)){
 
             gunLine.SetPosition(1, shootHit.point);
-            // Ö»ÓĞ´òµ½ Shootable Í¼²ã£¬²ÅÖ´ĞĞµôÑª
+            // åªæœ‰æ‰“åˆ° Shootable å›¾å±‚ï¼Œæ‰æ‰§è¡Œæ‰è¡€
             if (shootHit.collider.gameObject.layer == LayerMask.NameToLayer("Shootable"))
             {
-                // °²È«»ñÈ¡£ºÓĞEnemyHealth²ÅµôÑª£¬Ã»ÓĞ¾ÍÌø¹ı
+                // å®‰å…¨è·å–ï¼šæœ‰EnemyHealthæ‰æ‰è¡€ï¼Œæ²¡æœ‰å°±è·³è¿‡
                 if (shootHit.collider.TryGetComponent<EnemyBase>(out var enemy))
                 {
                     float finalDmg = baseDamage * dmgMulti;

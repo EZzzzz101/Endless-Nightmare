@@ -1,28 +1,28 @@
-using Unity.IO.LowLevel.Unsafe;
+ï»¿using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-//ÍÃ×Ó¹Ö£¬¹Ö½ĞËÆºõÄÜÃÔ»óĞÜ¹ÖÎªÆä¸°ËÀ¡¾Îª¶ÓÓÑÌá¹©buff:{Ï×Éí}]
+//å…”å­æ€ªï¼Œæ€ªå«ä¼¼ä¹èƒ½è¿·æƒ‘ç†Šæ€ªä¸ºå…¶èµ´æ­»ã€ä¸ºé˜Ÿå‹æä¾›buff:{çŒ®èº«}]
 public class Zombunny : EnemyBase
 {
 
-    public float detectRange = 4f;       // ¼«Ğ¡¾¯½ä·¶Î§
-    public float fleeSpeed = 6f;         // ÌÓÅÜËÙ¶È
-    public float cryEffectRange = 8f;     // ¹Æ»óĞÜµÄ·¶Î§
-    public float fleeRunDistance = 15f;   // ÌÓÅÜ¾àÀë
-    public AudioClip crySound;            // ¿ŞÆüÒôĞ§
-    private bool _hasFleeForever = false; //¿ŞÆü±ê¼Ç
-    private bool hasPlayedCrySound = false; //¿ŞÆü¿ª¹Ø
+    public float detectRange = 4f;       // æå°è­¦æˆ’èŒƒå›´
+    public float fleeSpeed = 6f;         // é€ƒè·‘é€Ÿåº¦
+    public float cryEffectRange = 8f;     // è›Šæƒ‘ç†Šçš„èŒƒå›´
+    public float fleeRunDistance = 15f;   // é€ƒè·‘è·ç¦»
+    public AudioClip crySound;            // å“­æ³£éŸ³æ•ˆ
+    private bool _hasFleeForever = false; //å“­æ³£æ ‡è®°
+    private bool hasPlayedCrySound = false; //å“­æ³£å¼€å…³
 
-    // ×´Ì¬»ú
+    // çŠ¶æ€æœº
     private FSM fsm;
-    //ÉùÃ÷×´Ì¬
+    //å£°æ˜çŠ¶æ€
     private BunnyIdleState idleState;
     private BunnyChaseState chaseState;
-    private BunnyFleeState fleeState;     // ÌÓÅÜ+¿ŞÆü×´Ì¬
+    private BunnyFleeState fleeState;     // é€ƒè·‘+å“­æ³£çŠ¶æ€
     private BunnyDeathState deathState;
 
-    private Vector3 fleeTargetPos;        // ÌÓÅÜÄ¿±êµã
+    private Vector3 fleeTargetPos;        // é€ƒè·‘ç›®æ ‡ç‚¹
 
 
     protected override void Awake()
@@ -40,7 +40,7 @@ public class Zombunny : EnemyBase
         fsm.SwitchState(idleState);
     }
 
-    //ÖØĞ´Update()
+    //é‡å†™Update()
     protected override void Update()
     {
         if (isDead)
@@ -52,7 +52,7 @@ public class Zombunny : EnemyBase
         attackTimer += Time.deltaTime;
         fsm.Update();
 
-        // Ö»ÔÚ¡¾Ã»ÓĞÓÀ¾ÃÌÓÅÜ¡¿µÄÇé¿öÏÂ£¬²Å»á²ĞÑªÌÓÅÜ
+        // åªåœ¨ã€æ²¡æœ‰æ°¸ä¹…é€ƒè·‘ã€‘çš„æƒ…å†µä¸‹ï¼Œæ‰ä¼šæ®‹è¡€é€ƒè·‘
         if (!_hasFleeForever && currentHealth < maxHealth * 0.5f && fsm.CurrentState != fleeState)
         {
             fsm.SwitchState(fleeState);
@@ -65,7 +65,7 @@ public class Zombunny : EnemyBase
         fleeTargetPos = transform.position + awayDir * fleeRunDistance;
     }
 
-    // ºËĞÄ£º¿ŞÆü¹Æ»ó£¬¸øĞÜÉÏÏ×Éí±ê¼Ç
+    // æ ¸å¿ƒï¼šå“­æ³£è›Šæƒ‘ï¼Œç»™ç†Šä¸ŠçŒ®èº«æ ‡è®°
     public void CryToControlBears()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, cryEffectRange);
@@ -74,7 +74,7 @@ public class Zombunny : EnemyBase
             ZomBear bear = col.GetComponent<ZomBear>();
             if (bear != null)
             {
-                bear.ApplyMadness();  // ÍÃ×Ó¹Æ»óĞÜ½øÈëÊ§ĞÄ
+                bear.ApplyMadness();  // å…”å­è›Šæƒ‘ç†Šè¿›å…¥å¤±å¿ƒ
             }
         }
     }
@@ -85,7 +85,7 @@ public class Zombunny : EnemyBase
         base.Die();
     }
 
-    // ´ı»ú
+    // å¾…æœº
     private class BunnyIdleState : IState
     {
         private readonly Zombunny _bunny;
@@ -101,7 +101,7 @@ public class Zombunny : EnemyBase
         public void Update()
         {
             float dis = Vector3.Distance(_bunny.transform.position, _bunny.targetPlayer.position);
-            // Ö»ÓĞÃ»ÓÀ¾ÃÌÓÅÜ£¬²Å»á×·Íæ¼Ò
+            // åªæœ‰æ²¡æ°¸ä¹…é€ƒè·‘ï¼Œæ‰ä¼šè¿½ç©å®¶
             if (!_bunny._hasFleeForever&&dis < _bunny.detectRange)
             {
                 _bunny.fsm.SwitchState(_bunny.chaseState);
@@ -111,7 +111,7 @@ public class Zombunny : EnemyBase
         public void Exit() { }
     }
 
-    // ×·»÷
+    // è¿½å‡»
     private class BunnyChaseState : IState
     {
         private readonly Zombunny _bunny;
@@ -139,7 +139,7 @@ public class Zombunny : EnemyBase
         }
     }
 
-    // ÌÓÅÜ + ¿ŞÆü¹Æ»ó£¨ºËĞÄ×´Ì¬£©
+    // é€ƒè·‘ + å“­æ³£è›Šæƒ‘ï¼ˆæ ¸å¿ƒçŠ¶æ€ï¼‰
     private class BunnyFleeState : IState
     {
         private readonly Zombunny _bunny;
@@ -151,24 +151,24 @@ public class Zombunny : EnemyBase
             _bunny.anim.SetBool("IsMovingAway", true);
             _bunny.SetRandomEscapeDir();
 
-            // Ö»²¥Ò»´Î¿ŞÆü¿ªÍ·£¬·ÀÖ¹ÖØµş
+            // åªæ’­ä¸€æ¬¡å“­æ³£å¼€å¤´ï¼Œé˜²æ­¢é‡å 
             if (!_bunny.hasPlayedCrySound && _bunny.crySound != null)
             {
                 _bunny.enemyAudio.PlayOneShot(_bunny.crySound);
-                _bunny.hasPlayedCrySound = true; // ±ê¼ÇÎªÒÑ²¥·Å£¬ÓÀÔ¶²»»áÔÙ´¥·¢
+                _bunny.hasPlayedCrySound = true; // æ ‡è®°ä¸ºå·²æ’­æ”¾ï¼Œæ°¸è¿œä¸ä¼šå†è§¦å‘
             }
         }
 
         public void Update()
         {
-            // ÌÓÅÜÒÆ¶¯
+            // é€ƒè·‘ç§»åŠ¨
             _bunny.agent.speed = _bunny.fleeSpeed;
             _bunny.agent.SetDestination(_bunny.fleeTargetPos);
 
-            // ³ÖĞø¹Æ»óÖÜÎ§ĞÜ
+            // æŒç»­è›Šæƒ‘å‘¨å›´ç†Š
             _bunny.CryToControlBears();
 
-            // ÅÜÔ¶ºó»Øµ½´ı»ú
+            // è·‘è¿œåå›åˆ°å¾…æœº
             float dis = Vector3.Distance(_bunny.transform.position, _bunny.targetPlayer.position);
             if (dis > _bunny.fleeRunDistance)
             {
@@ -181,7 +181,7 @@ public class Zombunny : EnemyBase
         }
     }
 
-    // ËÀÍö
+    // æ­»äº¡
     private class BunnyDeathState : IState
     {
         private readonly Zombunny _bunny;

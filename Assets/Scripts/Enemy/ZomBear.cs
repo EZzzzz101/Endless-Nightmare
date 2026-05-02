@@ -1,34 +1,34 @@
-using Unity.IO.LowLevel.Unsafe;
+ï»¿using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-//ĞÜ¹Ö,´¿´âµÄ½ø¹¥¹ÖÊŞ
+//ç†Šæ€ª,çº¯ç²¹çš„è¿›æ”»æ€ªå…½
 public class ZomBear : EnemyBase
 {
-    //¿ñ±©×´Ì¬
+    //ç‹‚æš´çŠ¶æ€
     public float detectRange = 8f;
     public float enrageSpeed=1.5f;
     public float enrageDamage = 30f;
 
-    //Ê§ĞÄ×´Ì¬
-    public float madnessSpeedMulti=3f;  // ÒÆËÙ+3
-    public float madnessDuration = 10f;     // ³ÖĞø10Ãë
-    private float _madnessTimer;             // ¼ÆÊ±
-    private bool _isMadness;                 // ÊÇ·ñÊ§ĞÄ
-    private bool _canBeBuffed = true;        // ·ÀÖØ¸´µş¼Ó
+    //å¤±å¿ƒçŠ¶æ€
+    public float madnessSpeedMulti=3f;  // ç§»é€Ÿ+3
+    public float madnessDuration = 10f;     // æŒç»­10ç§’
+    private float _madnessTimer;             // è®¡æ—¶
+    private bool _isMadness;                 // æ˜¯å¦å¤±å¿ƒ
+    private bool _canBeBuffed = true;        // é˜²é‡å¤å åŠ 
 
-    // ×´Ì¬»úÊµÀı
+    // çŠ¶æ€æœºå®ä¾‹
     private FSM fsm;
 
-    // ÉùÃ÷ËùÓĞ×´Ì¬
+    // å£°æ˜æ‰€æœ‰çŠ¶æ€
     private BearIdleState idleState;
     private BearChaseState chaseState;
     private BearDeathState deathState;
 
-    //ÊÜ¹Æ»ó(Ê§ĞÄ)
+    //å—è›Šæƒ‘(å¤±å¿ƒ)
     public void ApplyMadness()
     {
-        // ²»¿ÉÖØ¸´µş¼Ó
+        // ä¸å¯é‡å¤å åŠ 
         if (!_canBeBuffed || isDead) return;
 
         _isMadness = true;
@@ -38,9 +38,9 @@ public class ZomBear : EnemyBase
 
     protected override void Awake()
     {
-        base.Awake(); // Ö´ĞĞ¸¸Àà³õÊ¼»¯
+        base.Awake(); // æ‰§è¡Œçˆ¶ç±»åˆå§‹åŒ–
 
-        // ³õÊ¼»¯FSM
+        // åˆå§‹åŒ–FSM
         fsm = new FSM();
         idleState = new BearIdleState(this);
         chaseState = new BearChaseState(this);
@@ -52,7 +52,7 @@ public class ZomBear : EnemyBase
         fsm.SwitchState(idleState);
     }
 
-    //ÖØĞ´Update()
+    //é‡å†™Update()
     protected override void Update()
     {
         if (isDead)
@@ -62,13 +62,13 @@ public class ZomBear : EnemyBase
         }
         attackTimer += Time.deltaTime;
 
-        // Ê§ĞÄBUFF¼ÆÊ±
+        // å¤±å¿ƒBUFFè®¡æ—¶
         if (_isMadness)
         {
             _madnessTimer += Time.deltaTime;
             if (_madnessTimer >= madnessDuration)
             {
-                // Ê§ĞÄ½áÊø
+                // å¤±å¿ƒç»“æŸ
                 _isMadness = false;
                 _canBeBuffed = true;
             }
@@ -82,16 +82,16 @@ public class ZomBear : EnemyBase
         base.Die();
     }
 
-    //***Èı¸ö×´Ì¬***
+    //***ä¸‰ä¸ªçŠ¶æ€***
 
-    //´ı»ú×´Ì¬
+    //å¾…æœºçŠ¶æ€
     private class BearIdleState :IState {
 
         private readonly ZomBear _bear;
         public BearIdleState(ZomBear bear) => _bear = bear;
         public void Enter()
         {
-            _bear.Idle(); // ¸¸Àà´ı»ú
+            _bear.Idle(); // çˆ¶ç±»å¾…æœº
             _bear.anim.SetBool("IsMoving", false);
         }
         public void Update()
@@ -111,7 +111,7 @@ public class ZomBear : EnemyBase
     }
 
 
-    //×·»÷×´Ì¬
+    //è¿½å‡»çŠ¶æ€
     private class BearChaseState : IState {
 
         private readonly ZomBear _bear;
@@ -123,7 +123,7 @@ public class ZomBear : EnemyBase
         public void Update()
         {
             float finalSpeed = _bear.moveSpeed;
-            //¿ñ±©
+            //ç‹‚æš´
             if (_bear.currentHealth < _bear.maxHealth * 0.5f)
             {
 
@@ -131,10 +131,10 @@ public class ZomBear : EnemyBase
                 _bear.attackDamage = _bear.enrageDamage;
             }
             
-            //Ê§ĞÄ
+            //å¤±å¿ƒ
             if (_bear._isMadness)
             {
-                Debug.Log("½øÈëÊ§ĞÄ");
+                Debug.Log("è¿›å…¥å¤±å¿ƒ");
                 finalSpeed += _bear.madnessSpeedMulti;
             }
 
@@ -185,7 +185,7 @@ public class ZomBear : EnemyBase
         GameEvent.OnGunShot -= OnGunShotHeard;
     }
 
-    // Ìıµ½Ç¹Éù ¡ú Ö±½Ó×·Íæ¼Ò
+    // å¬åˆ°æªå£° â†’ ç›´æ¥è¿½ç©å®¶
     private void OnGunShotHeard()
     {
         if (!isDead && fsm.CurrentState != chaseState)

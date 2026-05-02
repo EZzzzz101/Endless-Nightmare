@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEditor.XR;
 
 /// <summary>
-/// ´óÌüUI¿ØÖÆ½Å±¾
+/// å¤§å…UIæ§åˆ¶è„šæœ¬
 /// </summary>
 public class UILobby : MonoBehaviourPunCallbacks
 {
@@ -17,69 +17,69 @@ public class UILobby : MonoBehaviourPunCallbacks
     {
         btnCreateRoom.interactable = false;
         btnJoinRoom.interactable = false;
-        txtStatus.text = "ÕıÔÚÁ¬½Ó·şÎñÆ÷...";
+        txtStatus.text = "æ­£åœ¨è¿æ¥æœåŠ¡å™¨...";
     }
 
     /// <summary>
-    /// Á¬½Óµ½·şÎñÆ÷³É¹¦
+    /// è¿æ¥åˆ°æœåŠ¡å™¨æˆåŠŸ
     /// </summary>
     public override void OnConnectedToMaster()
     {
         btnCreateRoom.interactable = true;
         btnJoinRoom.interactable = true;
-        txtStatus.text = "ÒÑÁ¬½Ó·şÎñÆ÷";
+        txtStatus.text = "å·²è¿æ¥æœåŠ¡å™¨";
     }
 
     /// <summary>
-    /// Óë·şÎñÆ÷¶Ï¿ªÁ¬½Ó
+    /// ä¸æœåŠ¡å™¨æ–­å¼€è¿æ¥
     /// </summary>
     public override void OnDisconnected(DisconnectCause cause)
     {
         btnCreateRoom.interactable = false;
         btnJoinRoom.interactable = false;
-        txtStatus.text = "¶Ï¿ªÁ¬½Ó£º" + cause;
+        txtStatus.text = "æ–­å¼€è¿æ¥ï¼š" + cause;
     }
 
     /// <summary>
-    /// µã»÷´´½¨·¿¼ä°´Å¥
+    /// ç‚¹å‡»åˆ›å»ºæˆ¿é—´æŒ‰é’®
     /// </summary>
     public void OnClickCreateRoom()
     {
-        txtStatus.text = "ÕıÔÚ´´½¨·¿¼ä...";
+        txtStatus.text = "æ­£åœ¨åˆ›å»ºæˆ¿é—´...";
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
     }
 
     /// <summary>
-    /// µã»÷¿ìËÙ¼ÓÈë°´Å¥
+    /// ç‚¹å‡»å¿«é€ŸåŠ å…¥æŒ‰é’®
     /// </summary>
     public void OnClickJoinRoom()
     {
-        txtStatus.text = "ÕıÔÚÑ°ÕÒ·¿¼ä...";
+        txtStatus.text = "æ­£åœ¨å¯»æ‰¾æˆ¿é—´...";
         PhotonNetwork.JoinRandomRoom();
     }
 
     /// <summary>
-    /// ³É¹¦¼ÓÈë·¿¼ä
+    /// æˆåŠŸåŠ å…¥æˆ¿é—´
     /// </summary>
     public override void OnJoinedRoom()
     {
-        txtStatus.text = "½øÈë·¿¼ä£¬¼ÓÔØÓÎÏ·³¡¾°...";
+        txtStatus.text = "è¿›å…¥æˆ¿é—´ï¼ŒåŠ è½½æ¸¸æˆåœºæ™¯...";
         PhotonNetwork.LoadLevel("Game");
     }
 
     /// <summary>
-    /// ¼ÓÈëËæ»ú·¿¼äÊ§°Ü
+    /// åŠ å…¥éšæœºæˆ¿é—´å¤±è´¥
     /// </summary>
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        txtStatus.text = "Ã»ÓĞÕÒµ½·¿¼ä£¬Çë´´½¨·¿¼ä";
+        txtStatus.text = "æ²¡æœ‰æ‰¾åˆ°æˆ¿é—´ï¼Œè¯·åˆ›å»ºæˆ¿é—´";
     }
 
     /// <summary>
-    /// ´´½¨·¿¼äÊ§°Ü
+    /// åˆ›å»ºæˆ¿é—´å¤±è´¥
     /// </summary>
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        txtStatus.text = "´´½¨·¿¼äÊ§°Ü£º" + message;
+        txtStatus.text = "åˆ›å»ºæˆ¿é—´å¤±è´¥ï¼š" + message;
     }
 }
