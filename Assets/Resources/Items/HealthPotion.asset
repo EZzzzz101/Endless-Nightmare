@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 2fa6f64814d6dbf418ccd2e1c2731d3d, type: 3}
   price: 0
   description: 11
-  canStack: 0
+  canStack: 1
   maxStackCount: 10

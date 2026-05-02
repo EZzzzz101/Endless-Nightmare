@@ -2,11 +2,15 @@
 
 public class BagController : MonoBehaviour
 {
+
     private BagView _view;
     private InventoryModel _model;
 
+
     void Start()
     {
+       
+
         // 1. 获取View组件
         _view = GetComponent<BagView>();
 

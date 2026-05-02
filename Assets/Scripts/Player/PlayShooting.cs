@@ -66,7 +66,7 @@ public class PlayerShooting : MonoBehaviour
         //射击状态
         else
         {
-            if (Input.GetMouseButton(0) && timer >= timeBetweenBullets!)
+            if (Input.GetMouseButton(0) && timer >= timeBetweenBullets&& !BagManager.IsBagOpen)
             {
                 Shooting();
             }

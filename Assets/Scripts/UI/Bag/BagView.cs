@@ -46,13 +46,13 @@ public class BagView : MonoBehaviour
             _detailPanelInstance = Instantiate(ItemDetailPrefab, transform);
             _detailPanelInstance.SetActive(false);
         }
+        // 生成20个格子槽
+        GenerateSlots();
     }
 
     void Start()
     {
-        tipText.gameObject.SetActive(false);
-        // 生成20个格子槽
-        GenerateSlots();
+        tipText.gameObject.SetActive(false);   
     }
 
     // ------------------------------
@@ -91,10 +91,11 @@ public class BagView : MonoBehaviour
         // 2. 获取对应的格子槽对象
         GameObject slot = _slots[slotIndex];
 
-
-
         // 3. 清空格子槽内容（如果有的话）
-        ClearSlot(slot);
+        if (slot!= null)
+        {
+            ClearSlot(slot);
+        }
 
         // 4. 实例化物品
         if (itemData != null)
