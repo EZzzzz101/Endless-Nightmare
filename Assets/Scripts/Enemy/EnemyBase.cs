@@ -33,6 +33,9 @@ public abstract class EnemyBase : MonoBehaviour
     protected float attackTimer;      // 攻击计时
     protected bool isSinking;         // 是否正在下沉
 
+    [Header("掉落")]
+    public DropTable dropTable; 
+
     // 定义怪物死亡委托
     public delegate void OnEnemyKilled(int killScore);
     // 定义怪物死亡事件
@@ -200,8 +203,14 @@ public abstract class EnemyBase : MonoBehaviour
         // 发布被击杀通知
         EnemyKilled?.Invoke(killScore);
 
+        //成就系统：报告击杀了一个怪物
+        AchievementManager.Instance?.ReportEnemyKilled(gameObject.tag, 1);
+
         // 下沉
         StartSinking();
+
+        // 触发掉落
+        DropLoot();
     }
 
     //下沉销毁
@@ -270,9 +279,19 @@ public abstract class EnemyBase : MonoBehaviour
 
             // 发布被击杀通知
             EnemyKilled?.Invoke(killScore);
+             DropLoot();
 
             // 下沉
             StartSinking();
+        }
+    }
+
+    void DropLoot()
+    {
+        // 触发掉落
+        if (LootManager.Instance != null && dropTable != null)
+        {
+            LootManager.Instance.RollAndSpawn(transform.position, dropTable);
         }
     }
 }

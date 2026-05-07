@@ -29,7 +29,7 @@ public sealed class InventoryModel
     // ------------------------------
     // 核心方法1：添加物品
     // ------------------------------
-    public bool AddItem(ItemData itemData)
+    public bool AddItem(ItemData itemData,int count)
     {
         // 1. 先尝试堆叠（如果物品可以堆叠）
         if (itemData.canStack)
@@ -38,9 +38,10 @@ public sealed class InventoryModel
             if (existingItem != null)
             {
                 // 堆叠成功
-                existingItem.count++;
+                existingItem.count += count;
                 // 通知View更新这个格子
-                OnSlotChanged?.Invoke(existingItem.slotIndex, existingItem.data, existingItem.count);
+                OnSlotChanged?.Invoke(existingItem.slotIndex, existingItem.data, existingItem.count); 
+                // AchievementManager.Instance?.ReportItemCollected(itemData.itemName, count);
                 return true;
             }
         }
@@ -59,14 +60,17 @@ public sealed class InventoryModel
         {
             data = itemData,
             slotIndex = emptySlotIndex,
-            count = 1
+            count = count
         };
 
         // 4. 添加到列表
         _items.Add(newItem);
 
         // 5. 通知View更新
-        OnSlotChanged?.Invoke(emptySlotIndex, itemData, 1);
+        OnSlotChanged?.Invoke(emptySlotIndex, itemData, count);
+
+    //    //6. 成就系统：如果这个物品是成就相关的，报告给成就系统
+    //    AchievementManager.Instance?.ReportItemCollected(itemData.itemName, count);
 
         return true;
     }
@@ -194,4 +198,91 @@ public sealed class InventoryModel
             OnSlotChanged?.Invoke(toIndex, fromItem.data, fromItem.count);
         }
     }
+
+    /// <summary>
+    /// 导出所有背包物品（供存档用）
+    /// </summary>
+    public List<BagItemData> ExportAllItems()
+    {
+        List<BagItemData> result = new List<BagItemData>();
+        foreach (var item in _items)
+        {
+            result.Add(new BagItemData
+            {
+                itemName = item.data.itemName,
+                slotIndex = item.slotIndex,
+                count = item.count
+            });
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// 清空背包（读档前调用，避免旧数据残留）
+    /// </summary>
+    public void ClearAllItems()
+    {
+        _items.Clear();
+        // 通知 View 所有格子清空
+        for (int i = 0; i < TotalSlots; i++)
+        {
+            OnSlotChanged?.Invoke(i, null, 0);
+        }
+    }
+
+    /// <summary>
+    /// 读档专用：把物品恢复到指定格子（跳过自动找slot的逻辑）
+    /// </summary>
+    public void RestoreItem(ItemData itemData, int slotIndex, int count)
+    {
+       InventoryItem newItem =new InventoryItem
+       {
+           data=itemData,
+           slotIndex=slotIndex,
+           count=count
+       };
+       _items.Add(newItem);
+       OnSlotChanged?.Invoke(slotIndex, itemData, count);
+    }
+
+    // 统计背包里某个物品的总数量（成就系统用）
+    public int GetTotalCount(string itemName)
+    {
+        int total = 0;
+        foreach (var item in _items)
+        {
+            if (item.data.itemName == itemName)
+                total += item.count;
+        }
+        return total;
+    }
+
+    /// <summary>
+    /// 按物品名字扣除指定数量
+    /// </summary>
+    public void RemoveItemByName(string itemName, int removeCount)
+    {
+        int remaining = removeCount;
+        for (int i = _items.Count - 1; i >= 0 && remaining > 0; i--)
+        {
+            if (_items[i].data.itemName != itemName) continue;
+
+            int remove = Mathf.Min(_items[i].count, remaining);
+            _items[i].count -= remove;
+            remaining -= remove;
+
+            if (_items[i].count <= 0)
+            {
+                int slot = _items[i].slotIndex;
+                _items.RemoveAt(i);
+                OnSlotChanged?.Invoke(slot, null, 0);
+            }
+            else
+            {
+                OnSlotChanged?.Invoke(_items[i].slotIndex, _items[i].data, _items[i].count);
+            }
+        }
+    }
+
+
 }

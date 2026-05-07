@@ -5,7 +5,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     public delegate void OnScoreChanged(int score);
-    public event OnScoreChanged ScoreChanged;
+    public  OnScoreChanged ScoreChanged;
 
     public int currentScore = 0;
 

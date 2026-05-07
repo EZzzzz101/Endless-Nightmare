@@ -48,6 +48,7 @@ public class BagView : MonoBehaviour
         }
         // 生成20个格子槽
         GenerateSlots();
+        print("BagView Awake完成");
     }
 
     void Start()

@@ -52,6 +52,9 @@ public class LevelSystem : MonoBehaviour
             currentExp -= ExpToNextLevel;
             // 等级+1
             currentLevel++;
+            
+            // 成就系统：报告升级了
+            AchievementManager.Instance?.ReportLevelUp(currentLevel); 
         }
 
         // 更新UI
@@ -61,7 +64,7 @@ public class LevelSystem : MonoBehaviour
     /// <summary>
     /// 更新经验条和等级数字
     /// </summary>
-    private void UpdateUI()
+    public void UpdateUI()
     {
         // 1. 更新经验条填充量（0~1，对应0%~100%）
         float fillAmount = currentExp / ExpToNextLevel;

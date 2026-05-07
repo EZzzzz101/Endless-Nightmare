@@ -5154,6 +5154,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   moveSpeed: 3.5
   deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
+  dropTable: {fileID: 11400000, guid: 6fc2a0ff4552ccc43bd0b4266ac35a8c, type: 2}
   killScore: 50
 --- !u!1 &109428
 GameObject:

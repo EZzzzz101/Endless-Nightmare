@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29211f65ea6e8e418004f101b8268dc, type: 3}
+  m_Name: New Achievement
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementData
+  achievementID: collect_3_hp
+  title: "\u836F\u6C34\u6536\u96C6\u8005"
+  description: "\u6536\u96C6 3 \u4E2A\u751F\u547D\u836F\u6C34"
+  type: 0
+  targetItemName: "\u751F\u547D\u836F\u6C34"
+  targetCount: 3
+  rewardScore: 500

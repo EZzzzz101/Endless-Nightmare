@@ -1,13 +1,21 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public void OnClickStartGame()
     {
-        SceneManager.LoadScene("Game");
+        //进入游戏场景
+        GameManager.Instance.NewGame();
     }
 
+    public void OnClickContinueGame()
+    {
+            // 如果有存档，加载游戏场景
+        if (SaveManager.Instance.HasSaveFile())
+        {
+            GameManager.Instance.ContinueGame();
+        }
+    }
     public void OnClickQuitGame()
     {
     #if UNITY_EDITOR

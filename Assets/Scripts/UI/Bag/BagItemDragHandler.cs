@@ -101,7 +101,6 @@ public class BagItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
             if (_currentHighlightSlot != null)
                 _currentHighlightSlot.SetHighlight(true);
-             print("2121");
         }
         print(_currentHighlightSlot != null ? $"高亮格子索引：{_currentHighlightSlot.SlotIndex}" : "没有高亮格子");
     }

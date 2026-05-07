@@ -7,6 +7,9 @@ TagManager:
   - ZomBear
   - Zombunny
   - Hellephant
+  - Item
+  - ItemCollector
+  - Pickup
   layers:
   - Default
   - TransparentFX

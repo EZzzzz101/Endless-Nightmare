@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66a91d5a29cdd74ba53d3558248b266, type: 3}
+  m_Name: Elder Dialogue Data
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  npcName: "\u8001\u6751\u957F"
+  nodes:
+  - nodeName: "\u5F00\u573A"
+    npcLines:
+    - "\u5192\u9669\u8005\uFF0C\u4F60\u7EC8\u4E8E\u6765\u4E86"
+    - "\u68EE\u6797\u91CC\u7684\u602A\u7269\u8D8A\u6765\u8D8A\u591A\u4E86"
+    - "\u4F60\u80FD\u5E2E\u6211\u53BB\u6536\u96C6 3 \u4E2A\u751F\u547D\u836F\u6C34\u5417"
+    playerOptions:
+    - playerText: "\u4EA4\u7ED9\u6211\u5427"
+      nextNodeIndex: 1
+    - playerText: "\u6211\u8FD8\u8981\u5FD9"
+      nextNodeIndex: 2
+  - nodeName: "\u63A5\u53D7"
+    npcLines:
+    - "\u8C22\u8C22\u4F60\uFF0C\u5E74\u8F7B\u4EBA"
+    playerOptions: []
+  - nodeName: "\u62D2\u7EDD"
+    npcLines:
+    - "\u90A3\u7B97\u4E86"
+    playerOptions: []

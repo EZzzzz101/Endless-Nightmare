@@ -10,9 +10,9 @@ public class PlayerHealth : MonoBehaviour
     // 委托
     public delegate void OnHealthChanged(float currentHealth, float maxHealth, bool isDead);
     // 事件
-    public event OnHealthChanged HealthChanged;
+    public  OnHealthChanged HealthChanged;
     //玩家血量
-    public float maxHealth = 100;
+    public float maxHealth;
     public float health;
     //玩家是否死亡
     public bool PlayerIsDeath = false;
@@ -63,6 +63,8 @@ public class PlayerHealth : MonoBehaviour
 
         // ====================== 死亡时也发布通知 ======================
         HealthChanged?.Invoke(health, maxHealth, PlayerIsDeath);
+
+        GameUIManager.Instance.GameOver();
     }
 
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool Instance;
+    public static ObjectPool Instance{get;private set;}
 
     [System.Serializable]
     public class Pool
@@ -11,6 +11,7 @@ public class ObjectPool : MonoBehaviour
         public string tag;          // 池子标签
         public GameObject prefab;   // 怪物预制体
         public int preloadCount;    // 预生成数量
+        public Transform parent;
     }
 
     public List<Pool> pools = new List<Pool>();
@@ -32,6 +33,8 @@ public class ObjectPool : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false); // 预生成时失活
+                if (pool.parent != null)
+                     obj.transform.SetParent(pool.parent);
                 objectQueue.Enqueue(obj);
             }
 

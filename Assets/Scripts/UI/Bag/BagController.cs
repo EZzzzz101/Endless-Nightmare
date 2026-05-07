@@ -7,7 +7,8 @@ public class BagController : MonoBehaviour
     private InventoryModel _model;
 
 
-    void Start()
+
+    void Awake()
     {
        
 
@@ -38,44 +39,44 @@ public class BagController : MonoBehaviour
         // 测试代码：游戏开始时自动加3个物品
         // 后面会删掉，换成商店购买
         // ------------------------------
-        TestAddItems();
+        //TestAddItems();
     }
 
     // ------------------------------
     // 公共方法：给外部调用的接口（比如商店）
     // ------------------------------
-    public bool AddItemToBag(ItemData itemData)
+    public bool AddItemToBag(ItemData itemData,int count)
     {
-        return _model.AddItem(itemData);
+        return _model.AddItem(itemData,count);
     }
 
 
     // ------------------------------
     // 测试方法
     // ------------------------------
-    private void TestAddItems()
-    {
-       // 加载你之前创建的物品数据（放在Resources/Items文件夹下）
-       ItemData healthPotion = Resources.Load<ItemData>("Items/HealthPotion");
-       ItemData manaPotion = Resources.Load<ItemData>("Items/ManaPotion");
-       ItemData weapon = Resources.Load<ItemData>("Items/Weapon");
+    // private void TestAddItems()
+    // {
+    //    // 加载你之前创建的物品数据（放在Resources/Items文件夹下）
+    //    ItemData healthPotion = Resources.Load<ItemData>("Items/HealthPotion");
+    //    ItemData manaPotion = Resources.Load<ItemData>("Items/ManaPotion");
+    //    ItemData weapon = Resources.Load<ItemData>("Items/Weapon");
 
-       // 测试添加
-       if (healthPotion != null)
-       {
-           _model.AddItem(healthPotion);
-           _model.AddItem(healthPotion); // 测试堆叠
-       }
-       if (manaPotion != null)
-       {
-           _model.AddItem(manaPotion);
-       }
-       if (weapon != null)
-       {
-           _model.AddItem(weapon);
-       }
-       print("测试1");
-    }
+    //    // 测试添加
+    //    if (healthPotion != null)
+    //    {
+    //        _model.AddItem(healthPotion,1);
+    //        _model.AddItem(healthPotion,1); // 测试堆叠
+    //    }
+    //    if (manaPotion != null)
+    //    {
+    //        _model.AddItem(manaPotion,1);
+    //    }
+    //    if (weapon != null)
+    //    {
+    //        _model.AddItem(weapon,1);
+    //    }
+    //    print("测试1");
+    // }
 
     void OnDestroy()
     {
