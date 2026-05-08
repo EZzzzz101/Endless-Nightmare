@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using ExcelDataReader.Log;
 using UnityEngine;
 
 //任务状态
@@ -25,33 +27,49 @@ public class AchievementManager : MonoBehaviour
     private Dictionary<string, bool> _claimed = new Dictionary<string, bool>();
     //通知ui刷新的事件
     public Action OnProgressUpdated;
-    public void Awake()
+    void Awake()
     {
         Instance=this;
     }
 
-    void Start()
+
+    void OnEnable()
     {
-        //初始化所有成就为0
+          //初始化所有成就为0
         foreach(var ach in allAchievements)
         {
             _progress[ach.achievementID] = 0;
             _claimed[ach.achievementID] = false;
             _accepted[ach.achievementID] = false;
         }
-        //test
-        AcceptAchievement("collect_3_hp");
         InventoryModel.Instance.OnSlotChanged += OnBagChanged;
+         // 测试
+    // _accepted["kill_10_any"] = true;
+    // Debug.Log($"测试接取 kill_10_any, 字典里有 {_accepted.Count} 个成就");
+    //    if (EnemyManager.Instance != null)
+    // EnemyManager.Instance.StartSpawning();
+    }
+    void OnDestroy()
+    {
+        InventoryModel.Instance.OnSlotChanged -= OnBagChanged;
     }
 
-    void OnDestroy()
-{
-    InventoryModel.Instance.OnSlotChanged -= OnBagChanged;
-}
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            foreach (var ach in allAchievements)
+            {
+                Debug.Log($"[任务] {ach.achievementID} | 状态={GetStatus(ach.achievementID)} | 进度={GetProgress(ach.achievementID)}/{ach.targetCount}");
+            }
+        }
+    }
+
+
 
     // ========== 各系统调这个来报告进度 ==========
 
-     /// <summary> 对话里接任务 </summary>
+    /// <summary> 对话里接任务 </summary>
     public void AcceptAchievement(string achievementID)
     {
         if (_accepted.ContainsKey(achievementID))
@@ -83,23 +101,23 @@ public class AchievementManager : MonoBehaviour
     /// <summary>
     /// 杀怪时调用
     /// </summary>
-    public void ReportEnemyKilled(string enemyTag,int count)
+   public void ReportEnemyKilled(string enemyTag, int count)
     {
         foreach (var ach in allAchievements)
         {
-            if (!_accepted[ach.achievementID]) continue;
-            if (_claimed[ach.achievementID]) continue;
+            if (!_accepted.ContainsKey(ach.achievementID) || !_accepted[ach.achievementID]) continue;
+            if (_claimed.ContainsKey(ach.achievementID) && _claimed[ach.achievementID]) continue;
             if (ach.type != AchievementType.KillEnemy) continue;
 
-            //指定tag怪或者任意怪物
             bool match = string.IsNullOrEmpty(ach.targetItemName)
-                      || ach.targetItemName == enemyTag;
+                    || ach.targetItemName == enemyTag;
             if (!match) continue;
 
             _progress[ach.achievementID] += count;
         }
         OnProgressUpdated?.Invoke();
     }
+
 
     /// <summary>
     /// 升级时调用  
@@ -158,6 +176,7 @@ public class AchievementManager : MonoBehaviour
         ScoreManager.Instance.AddScore(ach.rewardScore);
         _claimed[achievementID] = true;
 
+
         // 扣除背包物品
          InventoryModel.Instance.RemoveItemByName(ach.targetItemName, ach.targetCount);
 
@@ -173,16 +192,60 @@ public class AchievementManager : MonoBehaviour
     {
         foreach (var ach in allAchievements)
         {
+            if (ach.type != AchievementType.CollectItem) continue;   // ← 加这行
             if (!_accepted[ach.achievementID]) continue;
             if (_claimed[ach.achievementID]) continue;
 
-            // 查背包里该物品一共有多少个
             int totalInBag = InventoryModel.Instance.GetTotalCount(ach.targetItemName);
-            _progress[ach.achievementID] =  Mathf.Min(totalInBag, ach.targetCount);
+            _progress[ach.achievementID] = Mathf.Min(totalInBag, ach.targetCount);
+        }
+        OnProgressUpdated?.Invoke();
+    }
 
-            // 达到目标就调事件
-            if (totalInBag >= ach.targetCount)
-                OnProgressUpdated?.Invoke();
+
+    /// <summary> 存档用：导出所有成就的接取和领取状态 </summary>
+    public List<AchievementSaveData> ExportAchievements()
+    {
+        List<AchievementSaveData> result = new List<AchievementSaveData>();
+        foreach (var ach in allAchievements)
+        {
+            result.Add(new AchievementSaveData
+            {
+                achievementID = ach.achievementID,
+                isAccepted = _accepted.ContainsKey(ach.achievementID) && _accepted[ach.achievementID],
+                isClaimed = _claimed.ContainsKey(ach.achievementID) && _claimed[ach.achievementID],
+            });
+        }
+        return result;
+    }
+
+    /// <summary> 读档用：恢复接取和领取状态，然后重算进度 </summary>
+    public void ImportAchievements(List<AchievementSaveData> list)
+    {
+        if (list == null) return;
+
+        foreach (var data in list)
+        {
+            if (_accepted.ContainsKey(data.achievementID))
+                _accepted[data.achievementID] = data.isAccepted;
+            if (_claimed.ContainsKey(data.achievementID))
+                _claimed[data.achievementID] = data.isClaimed;
+        }
+
+        // 根据背包重新算所有进度
+        RefreshAllProgress();
+        OnProgressUpdated?.Invoke();
+    }
+
+    /// <summary> 从背包重读所有成就进度 </summary>
+    void RefreshAllProgress()
+    {
+        foreach (var ach in allAchievements)
+        {
+            if (!_accepted[ach.achievementID]) continue;
+            int total = InventoryModel.Instance.GetTotalCount(ach.targetItemName);
+            _progress[ach.achievementID] = Mathf.Min(total, ach.targetCount);
         }
     }
+
 }

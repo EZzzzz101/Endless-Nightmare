@@ -10,8 +10,6 @@ public class BagController : MonoBehaviour
 
     void Awake()
     {
-       
-
         // 1. 获取View组件
         _view = GetComponent<BagView>();
 
@@ -33,13 +31,17 @@ public class BagController : MonoBehaviour
         _model.OnBagFull += _view.ShowTip;
 
         //订阅物品交换事件
-        _view.OnSwapItemRequested += _model.SwapItems;
+        _view.OnSwapItemRequested += _model.SwapItems;     
+    }
 
+    void Start()
+    {
         // ------------------------------
         // 测试代码：游戏开始时自动加3个物品
         // 后面会删掉，换成商店购买
         // ------------------------------
-        //TestAddItems();
+        // TestAddItems();
+
     }
 
     // ------------------------------
@@ -53,29 +55,17 @@ public class BagController : MonoBehaviour
 
     // ------------------------------
     // 测试方法
-    // ------------------------------
+    // // ------------------------------
     // private void TestAddItems()
     // {
     //    // 加载你之前创建的物品数据（放在Resources/Items文件夹下）
-    //    ItemData healthPotion = Resources.Load<ItemData>("Items/HealthPotion");
-    //    ItemData manaPotion = Resources.Load<ItemData>("Items/ManaPotion");
-    //    ItemData weapon = Resources.Load<ItemData>("Items/Weapon");
-
-    //    // 测试添加
+    //    ItemData healthPotion = Resources.Load<ItemData>("Items/生命药水");
     //    if (healthPotion != null)
     //    {
-    //        _model.AddItem(healthPotion,1);
-    //        _model.AddItem(healthPotion,1); // 测试堆叠
+    //         _model.AddItem(healthPotion,1);
+    //         _model.AddItem(healthPotion,1);
+    //         _model.AddItem(healthPotion,1);
     //    }
-    //    if (manaPotion != null)
-    //    {
-    //        _model.AddItem(manaPotion,1);
-    //    }
-    //    if (weapon != null)
-    //    {
-    //        _model.AddItem(weapon,1);
-    //    }
-    //    print("测试1");
     // }
 
     void OnDestroy()

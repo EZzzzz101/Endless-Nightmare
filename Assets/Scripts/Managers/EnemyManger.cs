@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
+
+    public static EnemyManager Instance { get; private set; }
+
     [Header("刷怪设置")]
     public float minSpawnDistance = 15f;
     public float maxSpawnDistance = 25f;
@@ -23,10 +26,34 @@ public class EnemyManager : MonoBehaviour
     private Transform player;
     private NavMeshHit navHit;
 
-    private void Start()
+    //是否开始生成
+    private bool _isSpawning = false;
+    public bool IsSpawning() => _isSpawning;
+
+
+    void Awake()
+    {
+        Instance=this;
+    }
+     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+    }
+
+    
+    //开始生成
+    public void StartSpawning()
+    {
+        if (_isSpawning) return;
+        _isSpawning = true;
         InvokeRepeating(nameof(SpawnEnemy), 0, spawnInterval);
+    }
+
+    //停止生成
+    public void StopSpawning()
+    {
+        _isSpawning = false;
+        CancelInvoke(nameof(SpawnEnemy));
     }
 
     private void SpawnEnemy()
@@ -83,4 +110,20 @@ public class EnemyManager : MonoBehaviour
 
         return tagHellephant;
     }
+
+    // EnemyManager 加
+    public void ClearAllEnemies()
+    {
+        CancelInvoke(nameof(SpawnEnemy));
+        _isSpawning = false;
+
+        // 把场上的怪全回收
+        var enemies = FindObjectsByType<EnemyBase>(FindObjectsSortMode.None);
+        foreach (var e in enemies)
+        {
+            if (!e.IsDead && !string.IsNullOrEmpty(e.poolTag))
+                ObjectPool.Instance.ReturnToPool(e.poolTag, e.gameObject);
+        }
+    }
+
 }

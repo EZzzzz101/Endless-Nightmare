@@ -20,6 +20,10 @@ public class SaveManager : MonoBehaviour
     {
         SaveData data = new SaveData();
 
+        data.isSpawning = EnemyManager.Instance.IsSpawning();
+        data.bgmStarted = DialogueManager.Instance.BgmEverStarted();
+
+
         // 从各系统收集数据
         //分数
         data.score = ScoreManager.Instance.currentScore;
@@ -40,6 +44,9 @@ public class SaveManager : MonoBehaviour
 
         // 背包数据
         data.bagItems = InventoryModel.Instance.ExportAllItems();
+        // 任务数据
+        data.achievements = AchievementManager.Instance.ExportAchievements();
+
 
         // 设置
         data.bgmVolume = 1f;  // 后面接了 Slider 再替换
@@ -67,6 +74,14 @@ public class SaveManager : MonoBehaviour
 
         string json = File.ReadAllText(SaveFilePath);
         SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        if (data.isSpawning && EnemyManager.Instance != null)
+         EnemyManager.Instance.StartSpawning();
+
+         if (data.bgmStarted && DialogueManager.Instance != null)
+         DialogueManager.Instance.bgmSource.Play();
+
+
         //0. 恢复分数
         ScoreManager.Instance.currentScore = data.score;
         ScoreManager.Instance.ScoreChanged?.Invoke(data.score); // 手动触发事件，刷新
@@ -109,11 +124,15 @@ public class SaveManager : MonoBehaviour
             }
         }
 
+        //恢复任务状态
+        AchievementManager.Instance.ImportAchievements(data.achievements);
+
         // 4. 恢复设置
         AudioListener.volume = data.sfxVolume;
         Screen.SetResolution(data.resolutionWidth, data.resolutionHeight, Screen.fullScreen);
 
         // 分辨率 ... 后续接上
+       
 
         Debug.Log("读档成功");
     }

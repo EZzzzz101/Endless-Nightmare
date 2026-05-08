@@ -16,6 +16,13 @@ public class SaveData
     public float exp;
     //背包物品
     public List<BagItemData> bagItems = new List<BagItemData>();
+    //刷不刷怪
+    public bool isSpawning;
+
+    public bool bgmStarted;
+
+    //任务数据
+    public List<AchievementSaveData> achievements = new List<AchievementSaveData>();
 
     // 设置
     public float bgmVolume;
@@ -31,4 +38,14 @@ public class BagItemData
     public string itemName;   // 用名字指向 ItemData
     public int slotIndex;
     public int count;
+}
+
+
+// 任务存档类
+[Serializable]
+public class AchievementSaveData
+{
+    public string achievementID;
+    public bool isAccepted;
+    public bool isClaimed;
 }

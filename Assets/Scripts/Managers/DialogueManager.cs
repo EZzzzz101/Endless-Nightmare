@@ -25,8 +25,12 @@ public class DialogueManager : MonoBehaviour
     //节点变化通知ui刷新委托
     public Action<DialogueNode,int> OnNodeChanged;
 
+    
+
     // 背景音乐
     public AudioSource bgmSource;
+    private bool _bgmEverStarted = false;
+    public bool BgmEverStarted() => _bgmEverStarted;
 
     void Awake()
     {
@@ -57,7 +61,7 @@ public class DialogueManager : MonoBehaviour
         if (bgmSource != null) bgmSource.Pause();
         _currentData = dialogueData;
         
-        ShowNode(dialogueData.nodes[0]);
+        ShowNode(FindStartingNode());
     }
 
  
@@ -67,6 +71,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void SelectOption(int optionIndex)
     {
+
         if (!IsTalking || CurrentNode == null) return;
         if (optionIndex < 0 || optionIndex >= CurrentNode.playerOptions.Count)
           {
@@ -75,6 +80,33 @@ public class DialogueManager : MonoBehaviour
           }
         //去选项列表里面找索引
         DialogueOption selected = CurrentNode.playerOptions[optionIndex];
+
+        // 如果有绑定的任务 → 接取
+        if (!string.IsNullOrEmpty(selected.acceptMissionID)
+            && AchievementManager.Instance != null)
+        {
+            AchievementManager.Instance.AcceptAchievement(selected.acceptMissionID);
+        }
+
+        // 交任务
+        if (!string.IsNullOrEmpty(selected.claimMissionID)
+            && AchievementManager.Instance != null)
+        {
+            AchievementManager.Instance.ClaimReward(selected.claimMissionID);
+        }
+
+        // （开始刷怪）
+        if (selected.startSpawning && EnemyManager.Instance != null)
+            EnemyManager.Instance.StartSpawning();
+
+        // （播放BGM）
+        if (selected.playBGM && bgmSource != null)
+        {
+            bgmSource.Play();
+            _bgmEverStarted = true;
+        }
+
+
         if (selected.nextNodeIndex == -1)
         {
             EndDialogue();
@@ -95,6 +127,61 @@ public class DialogueManager : MonoBehaviour
         // 恢复音乐
         if (bgmSource != null) bgmSource.UnPause();
     }
+
+    /// <summary>
+    /// 从对话的所有节点里，找第一个"条件满足"的节点作为入口。
+    /// 没条件（requiredMissionID 为空）的节点永远满足，放在列表前面就能兜底。
+    /// </summary>
+    DialogueNode FindStartingNode()
+    {
+        foreach (var node in _currentData.nodes)
+        {
+            if (!string.IsNullOrEmpty(node.requiredMissionID))
+            {
+                var status = AchievementManager.Instance?.GetStatus(node.requiredMissionID);
+                Debug.Log($"条件节点 [{node.nodeName}]: 要求={node.requiredStatus}, 当前状态={status}, 匹配={status == node.requiredStatus}");
+            }
+            
+            if (!string.IsNullOrEmpty(node.requiredMissionID)
+                && NodeMeetsCondition(node))
+            {
+                Debug.Log($"  → 命中: {node.nodeName}");
+                return node;
+            }
+        }
+        
+        Debug.Log("  → 无条件兜底");
+        return _currentData.nodes[0];
+    }
+
+
+
+    /// <summary>
+    /// 判断一个节点的条件是否满足。
+    /// 条件 = 某个任务的当前状态 == 节点要求的状态。
+    /// </summary>
+    bool NodeMeetsCondition(DialogueNode node)
+    {
+        // 没设 requiredMissionID → 无条件 → 永远满足
+        if (string.IsNullOrEmpty(node.requiredMissionID))
+            return true;
+
+        // AchievementManager 还没初始化 → 安全兜底
+        if (AchievementManager.Instance == null)
+            return true;
+
+        // 新增：任务已领取 → 这个条件节点永久失效，跳过
+        if (AchievementManager.Instance.GetStatus(node.requiredMissionID) == AchievementStatus.Claimed)
+           { Debug.Log("不用检测，永久失效");
+            return false;}
+
+        // 查：这个任务现在的状态 是不是等于 这个节点要求的状态
+        // 例：节点要求 CollectItem=Completable，现在任务刚好 Completable → 匹配
+        return AchievementManager.Instance.GetStatus(node.requiredMissionID)
+            == node.requiredStatus;
+    }
+
+
     /// <summary>
     /// 显示当前节点：更新文字 + 通知 UI
     /// </summary>      

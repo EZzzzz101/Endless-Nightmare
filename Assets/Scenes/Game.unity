@@ -3013,8 +3013,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5ab93c97041069e45a895485aa346aea, type: 2}
-  m_sharedMaterial: {fileID: 3948511897734193779, guid: 5ab93c97041069e45a895485aa346aea,
+  m_fontAsset: {fileID: 11400000, guid: 32467b3cd1595d548bc93713ef8d6590, type: 2}
+  m_sharedMaterial: {fileID: -1207876843364435792, guid: 32467b3cd1595d548bc93713ef8d6590,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3316,10 +3316,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 4fff99673a41e24439d527ad0bd6b569, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -9299,6 +9299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
   allAchievements:
   - {fileID: 11400000, guid: 0554f7faf8f526040afe542ee7aaeadf, type: 2}
+  - {fileID: 11400000, guid: f575a75a0cc2732448290d626ab3db90, type: 2}
 --- !u!1 &1159556954
 GameObject:
   m_ObjectHideFlags: 0
@@ -10016,7 +10017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747532600b9a6e54e8de069c7d7ac854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteraction
-  dialogueData: {fileID: 11400000, guid: f70234c660455c042a64bdc28344abff, type: 2}
+  dialogueData: {fileID: 11400000, guid: eb938e28d2258c94bb8a0b7fd30cb2c4, type: 2}
   interactionHint: {fileID: 1211230716}
 --- !u!136 &1247421802
 CapsuleCollider:
@@ -11902,8 +11903,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u4F60\u597D\u5192\u9669\u8005\u6211\u9700\u8981\u5E2E\u52A9\u597D\u7684\u62D2\u7EDD\u8C22\u8C22"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5ab93c97041069e45a895485aa346aea, type: 2}
-  m_sharedMaterial: {fileID: 3948511897734193779, guid: 5ab93c97041069e45a895485aa346aea,
+  m_fontAsset: {fileID: 11400000, guid: 32467b3cd1595d548bc93713ef8d6590, type: 2}
+  m_sharedMaterial: {fileID: -1207876843364435792, guid: 32467b3cd1595d548bc93713ef8d6590,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12728,8 +12729,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u7EE7\u7EED..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5ab93c97041069e45a895485aa346aea, type: 2}
-  m_sharedMaterial: {fileID: 3948511897734193779, guid: 5ab93c97041069e45a895485aa346aea,
+  m_fontAsset: {fileID: 11400000, guid: 32467b3cd1595d548bc93713ef8d6590, type: 2}
+  m_sharedMaterial: {fileID: -1207876843364435792, guid: 32467b3cd1595d548bc93713ef8d6590,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12796,7 +12797,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1827242552

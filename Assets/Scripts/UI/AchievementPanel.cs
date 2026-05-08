@@ -56,34 +56,38 @@ public class AchievementPanel : MonoBehaviour
 
             //描述文字
             var descText = block.transform.Find("DescriptionText").GetComponent<TMP_Text>();
+            descText.text=ach.description;
             // 进度文字
             int current = _achievementManager.GetProgress(ach.achievementID);
             var progressText = block.transform.Find("ProgressText").GetComponent<TMP_Text>();
-            progressText.text = $"{current} / {ach.targetCount}";
+            progressText.text = $"{Mathf.Min(current,ach.targetCount)} / {ach.targetCount}";
 
-            // 领取按钮
-            var claimBtn = block.transform.Find("ClaimButton").GetComponent<Button>();
-            var btnText = claimBtn.GetComponentInChildren<TMP_Text>();
+            //任务报酬
 
-            //1.可领取状态
-            if (status== AchievementStatus.Completable)
-            {
-                claimBtn.interactable = true;
-                btnText.text = "领取";
-            }
-            //2.未完成状态
-            else
-            {
-                claimBtn.interactable = false;
-                btnText.text = "未完成";
-            }
 
-            // 闭包
-            string id = ach.achievementID;
-            claimBtn.onClick.AddListener(() =>
-            {
-                _achievementManager.ClaimReward(id);
-            });
+            // // 领取按钮
+            // var claimBtn = block.transform.Find("ClaimButton").GetComponent<Button>();
+            // var btnText = claimBtn.GetComponentInChildren<TMP_Text>();
+
+            // //1.可领取状态
+            // if (status== AchievementStatus.Completable)
+            // {
+            //     claimBtn.interactable = true;
+            //     btnText.text = "领取";
+            // }
+            // //2.未完成状态
+            // else
+            // {
+            //     claimBtn.interactable = false;
+            //     btnText.text = "未完成";
+            // }
+
+            // // 闭包
+            // string id = ach.achievementID;
+            // claimBtn.onClick.AddListener(() =>
+            // {
+            //     _achievementManager.ClaimReward(id);
+            // });
         }
     }
 }

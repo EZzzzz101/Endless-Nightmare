@@ -22,13 +22,39 @@ MonoBehaviour:
     playerOptions:
     - playerText: "\u4EA4\u7ED9\u6211\u5427"
       nextNodeIndex: 1
+      acceptMissionID: collect_3_hp
+      claimMissionID: 
     - playerText: "\u6211\u8FD8\u8981\u5FD9"
       nextNodeIndex: 2
+      acceptMissionID: 
+      claimMissionID: 
+    requiredMissionID: collect_3_hp
+    requiredStatus: 0
   - nodeName: "\u63A5\u53D7"
     npcLines:
     - "\u8C22\u8C22\u4F60\uFF0C\u5E74\u8F7B\u4EBA"
     playerOptions: []
+    requiredMissionID: 
+    requiredStatus: 0
   - nodeName: "\u62D2\u7EDD"
     npcLines:
     - "\u90A3\u7B97\u4E86"
     playerOptions: []
+    requiredMissionID: 
+    requiredStatus: 0
+  - nodeName: "\u8FDB\u884C\u4E2D"
+    npcLines:
+    - "\u8FD8\u5DEE\u4E00\u4E9B\uFF0C\u7EE7\u7EED\u52AA\u529B"
+    playerOptions: []
+    requiredMissionID: collect_3_hp
+    requiredStatus: 1
+  - nodeName: "\u5DF2\u5B8C\u6210"
+    npcLines:
+    - "\u6536\u96C6\u591F\u4E86\uFF01\u7ED9\u4F60\u62A5\u916C"
+    playerOptions:
+    - playerText: "\u9886\u53D6\u5956\u52B1"
+      nextNodeIndex: -1
+      acceptMissionID: 
+      claimMissionID: collect_3_hp
+    requiredMissionID: collect_3_hp
+    requiredStatus: 2
