@@ -7,7 +7,7 @@ public class GameSceneController : MonoBehaviour
         //保存游戏数据并返回主界面
         //保存游戏数据环节
         Debug.Log($"GameManager.Instance 是否为 null：{GameManager.Instance == null}");
-        SaveManager.Instance.Save();
+        SaveManager.Instance.Save(GameManager.Instance.CurrentPlayerId);
         GameManager.Instance.LoadMainScene();
     }
 

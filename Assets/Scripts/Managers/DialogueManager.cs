@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     public AudioSource bgmSource;
     private bool _bgmEverStarted = false;
     public bool BgmEverStarted() => _bgmEverStarted;
+    public void MarkBgmStarted() => _bgmEverStarted = true;
 
     void Awake()
     {

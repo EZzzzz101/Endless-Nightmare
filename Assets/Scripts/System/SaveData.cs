@@ -6,6 +6,10 @@ using System.Collections.Generic;
 [Serializable]
 public class SaveData
 {
+    //存档玩家ID
+    public string playerId;
+    //时间戳
+    public string lastSaveTime;
     //分数
     public int score;
     //玩家状态
@@ -48,4 +52,15 @@ public class AchievementSaveData
     public string achievementID;
     public bool isAccepted;
     public bool isClaimed;
+}
+
+//存档ui用
+[System.Serializable]
+public class SaveSlotInfo
+{
+    public string playerId;
+    public bool isEmpty = true;
+    public int playerLevel;
+    public int score;
+    public string lastSaveTime;
 }

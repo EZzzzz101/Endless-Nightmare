@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.Audio;
 
 public class DialoguePanel : MonoBehaviour
 {
@@ -15,6 +17,18 @@ public class DialoguePanel : MonoBehaviour
     public GameObject continueHint;       // 箭头 + 文字 "点击继续"
     public Button fullPanelButton;        // 覆盖全面板的透明按钮
 
+    //打字机字体出现间隔
+    public float myTime=0.05f;
+    //打字机音效
+    public AudioClip audioClip;
+
+    private AudioSource npcAudio;
+
+    private Coroutine _typeCoroutine;
+    private string _fullText;
+    private bool _isTyping;
+
+
 
     void Awake()
     {
@@ -22,6 +36,9 @@ public class DialoguePanel : MonoBehaviour
         DialogueManager.Instance.OnNodeChanged += Refresh;
         //监听点击进入下一句话事件
         fullPanelButton.onClick.AddListener(OnClickContinue);
+        //获取音频组件
+        npcAudio = GetComponent<AudioSource>();
+
     }
 
      void OnDestroy()
@@ -35,7 +52,12 @@ public class DialoguePanel : MonoBehaviour
 
         //1.更新npc名字和文字
         npcNameText.text =  DialogueManager.Instance.CurrentNPCName;
-        npcText.text = node.npcLines[lineIndex];
+       
+        //打字机效果
+        _fullText = node.npcLines[lineIndex];
+        if (_typeCoroutine != null) StopCoroutine(_typeCoroutine);
+        _typeCoroutine = StartCoroutine(TypeText(myTime));
+
 
         
 
@@ -75,6 +97,14 @@ public class DialoguePanel : MonoBehaviour
 
     void OnClickContinue()
     {
+        if (_isTyping)
+        {
+            // 字没打完 → 跳过动画，直接显示全文
+            StopCoroutine(_typeCoroutine);
+            npcText.text = _fullText;
+            _isTyping = false;
+            return;
+        }
         DialogueManager.Instance.ContinueDialogue();
     }
 
@@ -97,6 +127,25 @@ public class DialoguePanel : MonoBehaviour
                 DialogueManager.Instance.SelectOption(index);
             });
         }
+    }
+
+    //打字机协程
+    IEnumerator TypeText(float time)
+    {
+        _isTyping=true;
+        npcText.text="";
+
+        for(int i = 0; i < _fullText.Length; i++)
+        {
+
+            npcText.text+=_fullText[i];
+            if (!char.IsWhiteSpace(_fullText[i]) && !char.IsPunctuation(_fullText[i]))
+            npcAudio.PlayOneShot(audioClip);
+
+            yield return new WaitForSecondsRealtime(time);
+        }
+
+        _isTyping = false;
     }
 
 }

@@ -17,22 +17,28 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private string SavePath => Path.Combine(Application.persistentDataPath, "save_data.json");
+    private string _currentPlayerId;
+    public string CurrentPlayerId => _currentPlayerId;
 
-    // 新游戏：删档 → 进 Game
-    public void NewGame()
+    // 新游戏：记下 ID → 进 Game
+    public void NewGame(string playerId)
     {
-        if (File.Exists(SavePath))
-            File.Delete(SavePath);
-
+        _currentPlayerId = playerId;
         LoadGameScene();
     }
 
     // 继续游戏：有档才进
-    public void ContinueGame()
+    public void ContinueGame(string playerId)
     {
-        if (File.Exists(SavePath))
+        if (SaveManager.Instance.HasSaveFile(playerId))
+        {
+            _currentPlayerId = playerId;
             LoadGameScene();
+        }
+        else
+        {
+            Debug.LogWarning($"玩家 {playerId} 没有存档");
+        }
     }
 
     void LoadGameScene()

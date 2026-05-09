@@ -182,6 +182,12 @@ public class AchievementManager : MonoBehaviour
 
         Debug.Log($"成就 [{ach.title}] 已领取，获得 {ach.rewardScore} 分");
         OnProgressUpdated?.Invoke();
+
+        if (AllQuestsClaimed())
+        {
+            var npc = FindObjectOfType<NPCVisibility>();
+            if (npc != null) npc.gameObject.SetActive(false);
+        }
         return true;
     }
 
@@ -248,4 +254,15 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+    //检测有没有全部领取
+    public bool AllQuestsClaimed()
+    {
+        foreach (var ach in allAchievements)
+        {
+            var s = GetStatus(ach.achievementID);
+            if (s != AchievementStatus.Claimed)
+                return false;
+        }
+        return true;
+    }
 }
