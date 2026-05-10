@@ -28,6 +28,7 @@ public class BagItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (_rect == null || _bagView == null) return;
         //记住原来的父物体
         _originalParent = transform.parent;
         //记住原来的位置
@@ -41,6 +42,7 @@ public class BagItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+         if (_rect == null) return;
         // 拖拽中的逻辑
          _rect.position = eventData.position;
         Debug.Log("正在拖拽物品");
@@ -49,6 +51,7 @@ public class BagItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (_rect == null || _bagView == null) return;  
         // 先关掉当前高亮
         if (_currentHighlightSlot != null)
         {

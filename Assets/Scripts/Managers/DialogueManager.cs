@@ -163,21 +163,20 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     bool NodeMeetsCondition(DialogueNode node)
     {
-        // 没设 requiredMissionID → 无条件 → 永远满足
+        // 没设 requiredMissionID
         if (string.IsNullOrEmpty(node.requiredMissionID))
             return true;
 
-        // AchievementManager 还没初始化 → 安全兜底
+        // AchievementManager 还没初始化
         if (AchievementManager.Instance == null)
             return true;
 
-        // 新增：任务已领取 → 这个条件节点永久失效，跳过
+        // 任务已领取 
         if (AchievementManager.Instance.GetStatus(node.requiredMissionID) == AchievementStatus.Claimed)
            { Debug.Log("不用检测，永久失效");
             return false;}
 
-        // 查：这个任务现在的状态 是不是等于 这个节点要求的状态
-        // 例：节点要求 CollectItem=Completable，现在任务刚好 Completable → 匹配
+        // 这个任务现在的状态 是不是等于 这个节点要求的状态
         return AchievementManager.Instance.GetStatus(node.requiredMissionID)
             == node.requiredStatus;
     }
